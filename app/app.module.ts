@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 //Imports for loading & configuring the in-memory web api
 import { HttpModule, XHRBackend }  from '@angular/http';
-import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+
+
 
 //Routers array
 import { AppComponent }         from './app.component';
@@ -35,9 +35,7 @@ import { Auth }       from './auth.service';
   ],  
   providers: [
     HeroService,
-    Auth,
-    { provide: XHRBackend, useClass: InMemoryBackendService },
-    { provide: SEED_DATA, useClass: InMemoryDataService }
+    Auth
   ],
   bootstrap:  [ AppComponent ]
 })
