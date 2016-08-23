@@ -1,11 +1,9 @@
 import { Component }         from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Auth }              from './auth.service';
+import './rxjs-extensions';
 
 @Component({
-    selector: 'my-app',
-    providers: [ Auth ],
-    directives: [ ROUTER_DIRECTIVES ],
+    selector: 'my-app',    
     templateUrl: 'app/app.template.html'
 })
 
