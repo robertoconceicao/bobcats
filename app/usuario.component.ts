@@ -22,7 +22,7 @@ export class UsuarioComponent implements OnInit {
       ){}
 
     getUsuarios(){
-      this.usuarioService.getUsuarios().then(usuarios => this.usuarios = usuarios);
+     // this.usuarioService.getUsuarios().then(usuarios => this.usuarios = usuarios);
     }
 
     ngOnInit() {
