@@ -1,41 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Hero } from './hero';
+import { Usuario } from './usuario';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class HeroService {
-    private heroesUrl = 'app/heroes'; //URL to web api
+export class UsuarioService {
+    private usuarioUrl = '/api/usuario'; //URL to web api
 
     constructor(
         private http: Http
     ){}
-    getHeroes(){
-        return this.http.get(this.heroesUrl)
+    getUsuarios(){
+        return this.http.get(this.usuarioUrl)
                     .toPromise()
-                    .then(response => response.json().data as Hero[])
+                    .then(response => response.json().data as Usuario[])
                     .catch(this.handleError);
     }
     
-    getHero(id: number) {
-        return this.getHeroes()
-                    .then(heroes => heroes.find(hero => hero.id === id));
+    getUsuario(login: number) {
+        let url = `${this.usuarioUrl}/${login}`;
+        return this.http.get(url)
+                    .toPromise()
+                    .then(response => response.json().data as Usuario)
+                    .catch(this.handleError);        
     }
 
-    save(hero: Hero): Promise<Hero> {
-        if(hero.id) {
-            return this.put(hero);
+    save(usuario: Usuario): Promise<Usuario> {
+        if(usuario.id) {
+            return this.put(usuario);
         }
-        return this.post(hero);
+        return this.post(usuario);
     }
 
     //Delete
-    delete(hero: Hero) {
+    delete(usuario: Usuario) {
         let headers = new Headers();
         headers.append('Content-Type','application/json');
 
-        let url = `${this.heroesUrl}/${hero.id}`;
+        let url = `${this.usuarioUrl}/${usuario.id}`;
 
         return this.http
                     .delete(url, {headers: headers})
@@ -44,32 +47,32 @@ export class HeroService {
     }
 
     //Add
-    private post(hero: Hero) : Promise<Hero> {
+    private post(usuario: Usuario) : Promise<Usuario> {
         let headers = new Headers({'Content-Type':'application/json'});
 
         return this.http
-                    .post(this.heroesUrl, JSON.stringify(hero),{headers: headers})
+                    .post(this.usuarioUrl, JSON.stringify(usuario),{headers: headers})
                     .toPromise()
                     .then(res => res.json().data)
                     .catch(this.handleError);
     }
 
     //Edit
-    private put(hero: Hero) {
+    private put(usuario: Usuario) {
         let headers = new Headers();
         headers.append('Content-Type','application/json');
 
-        let url = `${this.heroesUrl}/${hero.id}`;
+        let url = `${this.usuarioUrl}/${usuario.id}`;
 
         return this.http
-                    .put(url, JSON.stringify(hero), {headers: headers})
+                    .put(url, JSON.stringify(usuario), {headers: headers})
                     .toPromise()
-                    .then(() => hero)
+                    .then(() => usuario)
                     .catch(this.handleError);
     }
 
     private handleError(error: any){
         console.error('An error occorred', error);
         return Promise.reject(error.message || error);
-    }    
+    }
 }

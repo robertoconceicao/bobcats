@@ -1,8 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { HeroesComponent } from './heroes.component';
+import { UsuarioComponent } from './usuario.component';
 import { DashboardComponent } from './dashboard.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { UsuarioDetailComponent } from './usuario-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -11,8 +11,12 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'heroes',
-    component: HeroesComponent
+    path: 'usuario/:id',
+    component: UsuarioComponent
+  },
+  {
+    path: 'usuarios',
+    component: UsuarioComponent
   },
   {
     path: 'dashboard',
@@ -20,7 +24,7 @@ const appRoutes: Routes = [
   },
   {
       path: 'detail/:id',
-      component: HeroDetailComponent
+      component: UsuarioDetailComponent
   }
 ];
 
