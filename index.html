@@ -7,25 +7,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
-		<!-- Informacoes do menu -->
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/modernizr.custom.js"></script>
-		<script src="js/classie.js"></script>
-		<script src="js/gnmenu.js"></script>
-
-
 		<!-- Latest compiled and minified CSS -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 		<!-- Auth0 Lock script -->
     	<script src="http://cdn.auth0.com/js/lock/10.0.0/lock.min.js"></script>
 
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-
-	<!-- <link rel="stylesheet" href="styles.css"> -->
+		<!-- <link rel="stylesheet" href="styles.css"> -->
 
 		<!-- 1. Load libraries -->
 		 <!-- Polyfill(s) for older browsers -->
@@ -38,60 +26,20 @@
 		<script>
 		System.import('app').catch(function(err){ console.error(err); });
 		</script>
+		<script>
+			/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+			function myFunction() {
+				var x = document.getElementById("myTopnav");
+				if (x.className === "topnav") {
+					x.className += " responsive";
+				} else {
+					x.className = "topnav";
+				}
+			}
+		</script>
 	</head>
 	<!-- 3. Display the application -->
-	<body>		
-		<div class="container">
-			<ul id="gn-menu" class="gn-menu-main">
-				<li class="gn-trigger">
-					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-					<nav class="gn-menu-wrapper">
-						<div class="gn-scroller">
-							<ul class="gn-menu">
-								<li class="gn-search-item">
-									<input placeholder="Search" type="search" class="gn-search">
-									<a class="gn-icon gn-icon-search"><span>Search</span></a>
-								</li>
-								
-								<li><a routerLink="/dashboard" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-home">Dashboard</span></a></li>
-								<li><a routerLink="/usuarios" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Usuarios</span></a></li>
-								<li><a routerLink="/mensagens" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-weixin">Mensagens</span></a></li>
-
-								<li>
-									<a class="gn-icon gn-icon-download">Downloads</a>
-									<ul class="gn-submenu">
-										<li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>
-										<li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>
-									</ul>
-								</li>
-								<li><a class="gn-icon gn-icon-cog">Settings</a></li>
-								<li><a class="gn-icon gn-icon-help">Help</a></li>
-								<li>
-									<a class="gn-icon gn-icon-archive">Archives</a>
-									<ul class="gn-submenu">
-										<li><a class="gn-icon gn-icon-article">Articles</a></li>
-										<li><a class="gn-icon gn-icon-pictures">Images</a></li>
-										<li><a class="gn-icon gn-icon-videos">Videos</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div><!-- /gn-scroller -->
-					</nav>
-				</li>
-				<li><a href="#">Top 50</a></li>
-				<li>
-					<button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
-					<button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>			
-				</li>
-			</ul>
-			<header>
-				<my-app>Loading...</my-app>	
-			</header> 
-		</div><!-- /container -->
-		<script src="js/classie.js"></script>
-		<script src="js/gnmenu.js"></script>
-		<script>
-			new gnMenu( document.getElementById( 'gn-menu' ) );
-		</script>		
+	<body>
+		<my-app>Loading...</my-app>
 	</body>
 </html>

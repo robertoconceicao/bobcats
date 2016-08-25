@@ -12,7 +12,8 @@ import './rxjs-extensions';
    // </nav>
    // <router-outlet></router-outlet>
  // `
-    templateUrl: 'app/app.template.html'
+    templateUrl: 'app/app.template.html',
+    styleUrls: ['app/app.component.css']
 })
 
 export class AppComponent {
