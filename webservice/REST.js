@@ -1,4 +1,3 @@
-/*rest.js*/
 var mysql = require("mysql");
 var usuariodao = require("./usuariodao");
 

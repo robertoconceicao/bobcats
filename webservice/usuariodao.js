@@ -1,4 +1,3 @@
-/*usuariodao*/
 var mysql = require("mysql");
 
 var _findAllUsuarios = function(conn, callback) {
