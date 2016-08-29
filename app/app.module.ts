@@ -22,6 +22,7 @@ import { MensagemComponent }        from './mensagem.component';
 
 // Services
 import { UsuarioService} from './usuario.service';
+import { CidadeService} from './cidade.service';
 import { Auth }       from './auth.service';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { Auth }       from './auth.service';
   ],  
   providers: [
     UsuarioService,
+    CidadeService,
     Auth,   
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data

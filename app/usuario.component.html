@@ -1,1 +1,64 @@
-<h1>Usuarios</h1>
+<form>
+  
+    <h1>Fotos ....</h1>
+    <div class="form-group">
+        <label for="foto">File input</label>
+        <input type="file" id="foto">
+        <p class="help-block">Add fotos.</p>
+    </div>
+    <hr />    
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" placeholder="Nome">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" class="form-control" id="senha" placeholder="Senha">
+  </div>
+  <div class="form-group">
+    <label for="confirmaSenha">Confirma Senha</label>
+    <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirma Senha">
+  </div>
+  <div class="form-group">
+    <label for="estado">Unidade Federativa</label>
+    <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>    
+  </div>
+  <div class="form-group">
+    <label for="cidade">Cidade</label>
+    <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>    
+  </div>
+  <div class="form-group">
+    <label for="aparencia">Aparência</label>
+    <textarea class="form-control" rows="3"></textarea>
+  </div>
+  <div class="checkbox">
+    <span>Serviços Prestado:</span>  
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> Serviço 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> Serviço 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> Serviço 3
+    </label>    
+    ....
+  </div>
+  <button type="submit" class="btn btn-success">Salvar Informações</button>
+</form>
