@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { UsuarioComponent } from './usuario.component';
-import { DashboardComponent } from './dashboard.component';
-import { UsuarioDetailComponent } from './usuario-detail.component';
-import { MensagemComponent } from './mensagem.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { DashboardComponent } from './usuario/dashboard.component';
+import { UsuarioDetailComponent } from './usuario/usuario-detail.component';
+import { MensagemComponent } from './mensagem/mensagem.component';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   {
       path: 'mensagens/:id',
       component: MensagemComponent
-  }
+  }  
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

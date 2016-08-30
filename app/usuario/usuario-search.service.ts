@@ -1,7 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Usuario }           from './usuario';
+import { Usuario }           from '../classes/usuario';
 
 @Injectable()
 export class UsuarioSearchService {

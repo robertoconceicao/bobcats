@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Usuario } from './usuario';
+import { Usuario } from '../classes/usuario';
 import { UsuarioService} from './usuario.service';
+import { CidadeComponent } from '../cidades/cidade.component';
 
 @Component({
   selector: 'usuario-detail',
-  templateUrl: 'app/usuario-detail.component.html'
+  templateUrl: 'app/usuario/usuario-detail.component.html'
 })
 
 export class UsuarioDetailComponent implements OnInit {

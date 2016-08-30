@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CodigoDescricao } from './CodigoDescricao';
+import { CodigoDescricao } from '../classes/CodigoDescricao';
 import { CidadeService } from './cidade.service';
 
 import { OnInit } from '@angular/core';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'cidade-estado',  
-  templateUrl:'app/cidades.component.html'
+  templateUrl:'app/cidades/cidade.component.html'
 })
 
 export class CidadeComponent implements OnInit {

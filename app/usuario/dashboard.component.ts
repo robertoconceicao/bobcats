@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Usuario } from './usuario';
+import { Usuario } from '../classes/usuario';
 import { UsuarioService } from './usuario.service';
 
+
 @Component({
-  selector: 'mensagem',
-  templateUrl: 'app/mensagem.component.html',
-  styleUrls: ['app/mensagem.component.css']
+  selector: 'my-dashboard',
+  templateUrl: 'app/usuario/dashboard.component.html',
+  styleUrls: ['app/usuario/dashboard.component.css']
 })
 
-export class MensagemComponent implements OnInit { 
+export class DashboardComponent implements OnInit { 
 
     usuarios: Usuario[] = [];
     constructor(
@@ -20,5 +21,10 @@ export class MensagemComponent implements OnInit {
     ngOnInit(){
        // this.usuarioService.getUsuarios()
             //.then(usuarios => this.usuarios = usuarios.slice(1, 5));    
+    }
+
+    gotoDetail(usuario: Usuario){
+        let link = ['/detail', usuario.id];
+        this.router.navigate(link);
     }
 }
