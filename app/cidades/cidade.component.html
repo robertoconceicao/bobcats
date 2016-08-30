@@ -1,7 +1,7 @@
 <label for="estado">Unidade Federativa</label>
-<select class="form-control">
+<select class="form-control" [(ng-model)]="selectedEstado.codigo">
     <option>--- Selecione ---</option>
-    <option *ngFor="let estado of estados" [class.selected]="estado === selectedEstado" (click)="onSelect(estado)">
+    <option *ngFor="let estado of estados" [ngValue]="estado.codigo" (click)="onSelect(estado)">
         {{estado.descricao}}        
     </option>    
 </select>
@@ -16,7 +16,8 @@
     </option>
 </select>
 
-<br />
-{{estados}}
-<br />
-{{cidades}}
+<ul>
+    <li *ngFor="let estado of estados" (click)="onSelect(estado)">
+        {{estado.descricao}}        
+    </li>
+</ul>

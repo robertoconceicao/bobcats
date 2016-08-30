@@ -31,6 +31,5 @@ export class CidadeService {
     private handleError(error: any){
        console.log('An error occorred: '+ error);
        return Promise.reject(error.message || error);
-    }    
-  }
+    }
 }
