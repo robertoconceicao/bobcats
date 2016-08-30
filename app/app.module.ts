@@ -2,12 +2,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule, Headers, JsonpModule } from '@angular/http';
-
-// Imports for loading & configuring the in-memory web api
-import { XHRBackend } from '@angular/http';
-import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
-import { InMemoryDataService }               from './in-memory-data.service';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 //Routers array
 import { AppComponent }         from './app.component';
@@ -44,9 +39,7 @@ import { Auth }           from './auth.service';
   providers: [
     UsuarioService,
     CidadeService,
-    Auth,   
-    { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
-    { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
+    Auth
   ],
   bootstrap:  [ AppComponent ]
 })

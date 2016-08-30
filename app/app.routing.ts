@@ -4,6 +4,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { DashboardComponent } from './usuario/dashboard.component';
 import { UsuarioDetailComponent } from './usuario/usuario-detail.component';
 import { MensagemComponent } from './mensagem/mensagem.component';
+import { CidadeComponent } from './cidades/cidade.component';
 
 const appRoutes: Routes = [
   {
@@ -30,6 +31,10 @@ const appRoutes: Routes = [
   {
       path: 'mensagens/:id',
       component: MensagemComponent
+  },
+  {
+      path: 'cidades',
+      component: CidadeComponent
   }  
 ];
 

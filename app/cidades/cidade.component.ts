@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CodigoDescricao } from '../classes/CodigoDescricao';
+import { CodigoDescricao } from '../classes/codigodescricao';
 import { CidadeService } from './cidade.service';
 
 import { OnInit } from '@angular/core';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   selector: 'cidade-estado',  
   templateUrl:'app/cidades/cidade.component.html'
 })
+
 
 export class CidadeComponent implements OnInit {
     
@@ -24,7 +25,7 @@ export class CidadeComponent implements OnInit {
       ){}
 
     getEstados(){
-      this.cidadeService.getEstados().then(estados => this.estados = estados);
+      this.cidadeService.getEstados().then(estados => this.estados = estados);      
     }
     getCidades(){      
       this.cidadeService.getCidades(this.selectedEstado).then(cidades => this.cidades = cidades);
