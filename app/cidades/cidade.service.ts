@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { CodigoDescricao } from '../classes/codigodescricao';
+
+import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/toPromise';
 import '../rxjs-extensions';
@@ -31,5 +33,11 @@ export class CidadeService {
     private handleError(error: any){
        console.log('An error occorred: '+ error);
        return Promise.reject(error.message || error);
+    }
+
+    search(term: string): Observable<CodigoDescricao[]> {
+        return this.http
+                .get(`${this.cidadeUrl}/?name=${term}`)
+                .map((r: Response) => r.json().data as CodigoDescricao[]);
     }
 }
