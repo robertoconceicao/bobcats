@@ -1,6 +1,7 @@
 var mysql = require("mysql");
 var md5 = require('MD5');
 
+
 var _findAllUsuarios = function(conn, req, resp) {
     var query = "select * from esegusuario";
     query = mysql.format(query);
