@@ -1,6 +1,7 @@
 var mysql = require("mysql");
 var usuariodao = require("./usuariodao");
 var sujeitodao = require("./sujeitodao");
+var municipiodao = require("./municipiodao");
 
 function REST_ROUTER(router, connection, md5) {
     var self = this;
@@ -24,6 +25,10 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
             },
             "Usuariosujeito": {
                 "POST /api/usuariosujeito": "Insere um novo usuario e sujeito"
+            },
+            "Municipio": {
+                "GET /api/municipio": "Busca todos os nunicipios",
+                "GET /api/municipio/:nmMunicipio": "Busca todos os nunicipios pelo nome"
             }
         });
     });
@@ -65,6 +70,14 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
     /* usuariosujeito */
     router.post("/usuariosujeito", function(req, res) {
         sujeitodao.inserirSujeitoUsuario(connection, req, res);
+    });
+
+    /* municipios */
+    router.get("/municipio", function(req, res) {
+        municipiodao.findAllMunicipios(connection, req, res);
+    });
+    router.get("/municipio/:nmMunicipio", function(req, res) {
+        municipiodao.findAllMunicipiosByNome(connection, req, res);
     });
 
 }
