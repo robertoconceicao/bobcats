@@ -1,130 +1,72 @@
 var mysql = require("mysql");
 var usuariodao = require("./usuariodao");
+var sujeitodao = require("./sujeitodao");
 
 function REST_ROUTER(router, connection, md5) {
     var self = this;
     self.handleRoutes(router, connection, md5);
 }
 
-
-
 REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
-    var callback = function(res, err, rows) {
-        if (err) {
-            res.json({
-                "Error": true,
-                "Message": "Error executing MySQL query"
-            });
-        } else {
-            res.json({
-                "Error": false,
-                "Message": "Success",
-                "Usuarios": rows
-            });
-        }
-    };
-
-
     router.get("/", function(req, res) {
         res.json({
             "Usuario": {
                 "GET  /api/usuario": "Lista todos os usuarios",
-                "GET  /api/usuario/:login": "Lista o usuario pelo login",
+                "GET  /api/usuario/:login": "Busca o usuario pelo login",
                 "POST /api/usuario": "Insere um novo usuario",
                 "PUT  /api/usuario": "Atualiza o usuario"
+            },
+            "Sujeito": {
+                "GET  /api/sujeito": "Lista todos os sujeitos",
+                "GET  /api/sujeito/:codigo": "Busca o sujeito pelo código",
+                "POST /api/sujeito": "Insere um novo sujeito",
+                "PUT  /api/sujeito": "Atualiza o sujeito"
+            },
+            "Usuariosujeito": {
+                "POST /api/usuariosujeito": "Insere um novo usuario e sujeito"
             }
         });
     });
+
     /* USUARIO */
-
-    router.get("/teste", function(req, res) {
-        usuariodao.findAllUsuarios(connection);
-    });
-
     router.get("/usuario", function(req, res) {
-        var query = "select * from ??";
-        var table = ["esegusuario"];
-        query = mysql.format(query, table);
-        connection.query(query, function(err, rows) {
-            if (err) {
-                res.json({
-                    "Error": true,
-                    "Message": "Error executing MySQL query"
-                });
-            } else {
-                res.json({
-                    "Error": false,
-                    "Message": "Success",
-                    "Usuarios": rows
-                });
-            }
-        });
+        usuariodao.findAllUsuarios(connection, req, res);
     });
-
-    router.get("/usuario/:delogin", function(req, res) {
-        var query = "select * from ?? where ?? = ?";
-        var table = ["esegusuario", "delogin", req.params.delogin];
-        query = mysql.format(query, table);
-        connection.query(query, function(err, rows) {
-            if (err) {
-                res.json({
-                    "Error": true,
-                    "Message": "Error executing MySQL query " + err
-                });
-            } else {
-                res.json({
-                    "Error": false,
-                    "Message": "Success",
-                    "Usuarios": rows
-                });
-            }
-        });
+    router.get("/usuario/:deLogin", function(req, res) {
+        usuariodao.findUsuariosByLogin(connection, req, res);
     });
-
     router.post("/usuario", function(req, res) {
-        var query = "insert into esegusuario (delogin, desenha, flativo) values (?, ?, ?)";
-        if (!!req.body.delogin && !!req.body.desenha && !!req.body.flativo) {
-            var table = [req.body.delogin, md5(req.body.desenha), req.body.flativo];
-            query = mysql.format(query, table);
-            connection.query(query, function(err, rows) {
-                if (err) {
-                    res.json({
-                        "Error": true,
-                        "Message": "Error executing MySQL query " + err
-                    });
-                } else {
-                    res.json({
-                        "Error": false,
-                        "Message": "Usuario adicionado com sucesso"
-                    });
-                }
-            });
-        } else {
-            res.json({
-                "Error": true,
-                "Message": "Erro ao inserir o usuario, parametros obrigatorios (delogin, desenha, flativo)"
-            });
-        }
+        usuariodao.inserirUsuario(connection, req, res);
+    });
+    router.put("/usuario", function(req, res) {
+        usuariodao.atualizarUsuario(connection, req, res);
+    });
+    router.delete("/usuario", function(req, res) {
+        usuariodao.excluirUsuario(connection, req, res);
     });
 
-    router.put("/usuario", function(req, res) {
-        var query = "update ?? set ?? = ?, ?? = ? where ?? = ?";
-        var table = ["esegusuario", "desenha", md5(req.body.desenha), "flativo", req.body.flativo, "delogin", req.body.delogin];
-        query = mysql.format(query, table);
-        connection.query(query, function(err, rows) {
-            if (err) {
-                res.json({
-                    "Error": true,
-                    "Message": "Error executing MySQL query " + err
-                });
-            } else {
-                res.json({
-                    "Error": false,
-                    "Message": "Dados do usuario " + req.body.delogin + " atualizado com sucesso"
-                });
-            }
-        });
+    /* SUJEITO */
+    router.get("/sujeito", function(req, res) {
+        sujeitodao.findAllSujeitos(connection, req, res);
     });
+    router.get("/sujeito/:deLogin", function(req, res) {
+        sujeitodao.findAllSujeitoByLogin(connection, req, res);
+    });
+    router.post("/sujeito", function(req, res) {
+        sujeitodao.inserirSujeito(connection, req, res);
+    });
+    router.put("/sujeito", function(req, res) {
+        sujeitodao.atualizarSujeito(connection, req, res);
+    });
+    router.delete("/sujeito", function(req, res) {
+        sujeitodao.excluirSujeito(connection, req, res);
+    });
+
+    /* usuariosujeito */
+    router.post("/usuariosujeito", function(req, res) {
+        sujeitodao.inserirSujeitoUsuario(connection, req, res);
+    });
+
 }
 
 module.exports = REST_ROUTER;
