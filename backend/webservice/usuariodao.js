@@ -1,5 +1,9 @@
+<<<<<<< a2716924be1897f776a224d59eaa94e114dc1a78:webservice/usuariodao.js
 var mysql = require("mysql");
 var md5 = require('MD5');
+=======
+var mysql = require("mysql");
+>>>>>>> alterado estrutura de pastas:backend/webservice/usuariodao.js
 
 
 var _findAllUsuarios = function(conn, req, resp) {

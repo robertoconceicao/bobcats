@@ -37,7 +37,7 @@ export class CidadeService {
 
     search(term: string): Observable<CodigoDescricao[]> {
         return this.http
-                .get(`${this.cidadeUrl}/?name=${term}`)
-                .map((r: Response) => r.json().data as CodigoDescricao[]);
+                .get(`${this.cidadeUrl}/${term}`)
+                .map((r: Response) => r.json() as CodigoDescricao[]);
     }
 }
