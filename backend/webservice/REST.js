@@ -13,13 +13,16 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
         res.json({
             "Usuario": {
                 "GET  /api/usuario": "Lista todos os usuarios",
-                "GET  /api/usuario/:login": "Busca o usuario pelo login",
+                "GET  /api/usuario/:deLogin": "Busca o usuario pelo login",
                 "POST /api/usuario": "Insere um novo usuario",
                 "PUT  /api/usuario": "Atualiza o usuario"
             },
+            "Usuariologin" : {
+                "PUT  /api/usuariologin": "Valida Usuario cadastrado"
+            },
             "Sujeito": {
                 "GET  /api/sujeito": "Lista todos os sujeitos",
-                "GET  /api/sujeito/:codigo": "Busca o sujeito pelo código",
+                "GET  /api/sujeito/:deLogin": "Busca o sujeito pelo código",
                 "POST /api/sujeito": "Insere um novo sujeito",
                 "PUT  /api/sujeito": "Atualiza o sujeito"
             },
@@ -48,6 +51,11 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
     });
     router.delete("/usuario", function(req, res) {
         usuariodao.excluirUsuario(connection, req, res);
+    });
+
+    /* USUARIOLOGIN */
+    router.put("/usuariologin", function(req, res) {
+        usuariodao.validaUsuario(connection, req, res);
     });
 
     /* SUJEITO */

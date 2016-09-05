@@ -105,10 +105,31 @@ var _excluirUsuario = function(conn, req, resp) {
     });
 };
 
+var _validaUsuario = function(conn, req, resp) {
+    var query = "select * from esegusuario where delogin = ? and deSenha = ?";
+    var table = [req.body.delogin, md5(req.body.desenha)];
+    query = mysql.format(query, table);
+    return conn.query(query, function(err, rows) {
+        if (err) {
+            resp.json({
+                "Error": true,
+                "Message": "Error executing MySQL query"
+            });
+        } else {
+            resp.json({
+                "Error": false,
+                "Message": "Success",
+                "Usuarios": rows
+            });
+        }
+    });
+};
+
 module.exports = {
     findAllUsuarios: _findAllUsuarios,
     findUsuariosByLogin: _findUsuariosByLogin,
     inserirUsuario: _inserirUsuario,
     atualizarUsuario: _atualizarUsuario,
     excluirUsuario: _excluirUsuario,
+    validaUsuario: _validaUsuario
 };
