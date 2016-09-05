@@ -1,0 +1,10 @@
+<br />
+<div id="search-component">
+  <label>Localizacao</label>  
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div>
+    <div *ngFor="let municipio of municipios | async" (click)="onSelectedMunicipio(municipio)" class="search-result" >
+      <span>{{municipio.nmmunicipio }}, </span> <span class="negrito"> {{municipio.nmestado}}</span>
+    </div>
+  </div>
+</div>

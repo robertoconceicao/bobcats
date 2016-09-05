@@ -9,28 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var cidade_service_1 = require('./cidade.service');
+var municipio_service_1 = require('./municipio.service');
 var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
 var router_1 = require('@angular/router');
-var CidadeComponent = (function () {
-    function CidadeComponent(router, cidadeService) {
+var MunicipioComponent = (function () {
+    function MunicipioComponent(router, municipioService) {
         this.router = router;
-        this.cidadeService = cidadeService;
+        this.municipioService = municipioService;
         this.searchTerms = new Subject_1.Subject();
     }
-    CidadeComponent.prototype.getEstados = function () {
+    MunicipioComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log("chamando metodo getEstados");
-        this.cidadeService.getEstados().then(function (estados) { return _this.estados = estados; });
-    };
-    CidadeComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.cidades = this.searchTerms
+        this.municipios = this.searchTerms
             .debounceTime(300) // wait for 300ms pause in events
             .distinctUntilChanged() // ignore if next search term is same as previous
             .switchMap(function (term) { return term // switch to new observable each time
-            ? _this.cidadeService.search(term)
+            ? _this.municipioService.search(term)
             : Observable_1.Observable.of([]); })
             .catch(function (error) {
             // TODO: real error handling
@@ -39,21 +34,22 @@ var CidadeComponent = (function () {
         });
     };
     // Push a search term into the observable stream.
-    CidadeComponent.prototype.search = function (term) {
+    MunicipioComponent.prototype.search = function (term) {
         this.searchTerms.next(term);
     };
-    CidadeComponent.prototype.onSelectedCidade = function (cidade) {
-        this.selectedCidade = cidade;
+    MunicipioComponent.prototype.onSelectedMunicipio = function (municipio) {
+        console.log("Chamando metodo: onSelectedMunicipio " + municipio);
+        this.selectedMunicipio = municipio;
     };
-    CidadeComponent = __decorate([
+    MunicipioComponent = __decorate([
         core_1.Component({
-            selector: 'cidade-estado',
-            templateUrl: 'app/cidades/cidade.component.html',
-            styleUrls: ['app/cidades/cidade.component.css']
+            selector: 'localizacao',
+            templateUrl: 'app/municipio/municipio.component.html',
+            styleUrls: ['app/municipio/municipio.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, cidade_service_1.CidadeService])
-    ], CidadeComponent);
-    return CidadeComponent;
+        __metadata('design:paramtypes', [router_1.Router, municipio_service_1.MunicipioService])
+    ], MunicipioComponent);
+    return MunicipioComponent;
 }());
-exports.CidadeComponent = CidadeComponent;
-//# sourceMappingURL=cidade.component.js.map
+exports.MunicipioComponent = MunicipioComponent;
+//# sourceMappingURL=municipio.component.js.map

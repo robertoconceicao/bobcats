@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { Usuario } from '../classes/usuario';
 import { UsuarioService} from './usuario.service';
-import { CidadeComponent } from '../cidades/cidade.component';
+import { MunicipioComponent } from '../municipio/municipio.component';
 
 @Component({
   selector: 'usuario-detail',

@@ -1,7 +1,6 @@
 "use strict";
 var Usuario = (function () {
     function Usuario() {
-        this.fotos = [];
     }
     return Usuario;
 }());

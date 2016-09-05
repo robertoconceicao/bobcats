@@ -4,7 +4,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { DashboardComponent } from './usuario/dashboard.component';
 import { UsuarioDetailComponent } from './usuario/usuario-detail.component';
 import { MensagemComponent } from './mensagem/mensagem.component';
-import { CidadeComponent } from './cidades/cidade.component';
+import { MunicipioComponent } from './municipio/municipio.component';
 
 const appRoutes: Routes = [
   {
@@ -33,8 +33,8 @@ const appRoutes: Routes = [
       component: MensagemComponent
   },
   {
-      path: 'cidades',
-      component: CidadeComponent
+      path: 'municipio',
+      component: MunicipioComponent
   }  
 ];
 

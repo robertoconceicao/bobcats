@@ -12,39 +12,31 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 require('../rxjs-extensions');
-var CidadeService = (function () {
-    function CidadeService(http) {
+var MunicipioService = (function () {
+    function MunicipioService(http) {
         this.http = http;
-        this.estadoUrl = 'http://localhost:8081/api/estados'; //URL to web api
-        this.cidadeUrl = 'http://localhost:8081/api/cidades'; //URL to web api
+        this.municipioUrl = 'http://localhost:3000/api/municipio'; //URL to web api
     }
-    CidadeService.prototype.getEstados = function () {
-        return this.http.get(this.estadoUrl)
+    MunicipioService.prototype.getMunicipios = function () {
+        return this.http.get(this.municipioUrl)
             .toPromise()
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
-    CidadeService.prototype.getCidades = function (estado) {
-        //let url = `${this.cidadeUrl}/${estado.codigo}`;
-        return this.http.get(this.cidadeUrl)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
-            .catch(this.handleError);
-    };
-    CidadeService.prototype.handleError = function (error) {
+    MunicipioService.prototype.handleError = function (error) {
         console.log('An error occorred: ' + error);
         return Promise.reject(error.message || error);
     };
-    CidadeService.prototype.search = function (term) {
+    MunicipioService.prototype.search = function (term) {
         return this.http
-            .get(this.cidadeUrl + "/" + term)
-            .map(function (r) { return r.json(); });
+            .get(this.municipioUrl + "/" + term)
+            .map(function (r) { return r.json().Municipios; });
     };
-    CidadeService = __decorate([
+    MunicipioService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], CidadeService);
-    return CidadeService;
+    ], MunicipioService);
+    return MunicipioService;
 }());
-exports.CidadeService = CidadeService;
-//# sourceMappingURL=cidade.service.js.map
+exports.MunicipioService = MunicipioService;
+//# sourceMappingURL=municipio.service.js.map

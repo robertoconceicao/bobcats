@@ -26,7 +26,7 @@ var UsuarioComponent = (function () {
         this.selectedUsuario = usuario;
     };
     UsuarioComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['/detail', this.selectedUsuario.id]);
+        this.router.navigate(['/detail', this.selectedUsuario.cdusuario]);
     };
     UsuarioComponent = __decorate([
         core_1.Component({

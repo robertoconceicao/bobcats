@@ -30,7 +30,7 @@ var UsuarioService = (function () {
             .catch(this.handleError);
     };
     UsuarioService.prototype.save = function (usuario) {
-        if (usuario.id) {
+        if (usuario.cdusuario) {
             return this.put(usuario);
         }
         return this.post(usuario);
@@ -39,7 +39,7 @@ var UsuarioService = (function () {
     UsuarioService.prototype.delete = function (usuario) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        var url = this.usuarioUrl + "/" + usuario.id;
+        var url = this.usuarioUrl + "/" + usuario.cdusuario;
         return this.http
             .delete(url, { headers: headers })
             .toPromise()
@@ -51,14 +51,14 @@ var UsuarioService = (function () {
         return this.http
             .post(this.usuarioUrl, JSON.stringify(usuario), { headers: headers })
             .toPromise()
-            .then(function (res) { return res.json().data; })
+            .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     //Edit
     UsuarioService.prototype.put = function (usuario) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        var url = this.usuarioUrl + "/" + usuario.id;
+        var url = this.usuarioUrl + "/" + usuario.cdusuario;
         return this.http
             .put(url, JSON.stringify(usuario), { headers: headers })
             .toPromise()

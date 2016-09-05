@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Usuario } from '../classes/usuario';
 import { UsuarioService } from './usuario.service';
 
-import { CidadeService}   from '../cidades/cidade.service';
+import { MunicipioService}   from '../municipio/municipio.service';
 
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -36,6 +36,6 @@ export class UsuarioComponent implements OnInit {
     }
 
     gotoDetail(){
-      this.router.navigate(['/detail',this.selectedUsuario.id]);
+      this.router.navigate(['/detail',this.selectedUsuario.cdusuario]);
     }
 }

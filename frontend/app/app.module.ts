@@ -9,15 +9,16 @@ import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
 
 // Components
+import { UsuarioCadFormComponent }  from './usuario/usuario-cad-form.component';
 import { UsuarioComponent }         from './usuario/usuario.component';
 import { DashboardComponent }       from './usuario/dashboard.component';
 import { UsuarioDetailComponent }   from './usuario/usuario-detail.component';
 import { MensagemComponent }        from './mensagem/mensagem.component';
-import { CidadeComponent }          from './cidades/cidade.component';
+import { MunicipioComponent }          from './municipio/municipio.component';
 
 // Services
 import { UsuarioService}  from './usuario/usuario.service';
-import { CidadeService}   from './cidades/cidade.service';
+import { MunicipioService}   from './municipio/municipio.service';
 import { Auth }           from './auth.service';
 
 @NgModule({
@@ -30,15 +31,16 @@ import { Auth }           from './auth.service';
   ],  
   declarations: [ 
     AppComponent,
+    UsuarioCadFormComponent,
     UsuarioComponent,
     DashboardComponent,
     UsuarioDetailComponent,
     MensagemComponent,
-    CidadeComponent 
+    MunicipioComponent 
   ],  
   providers: [
     UsuarioService,
-    CidadeService,
+    MunicipioService,
     Auth
   ],
   bootstrap:  [ AppComponent ]

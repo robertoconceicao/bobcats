@@ -1,6 +1,6 @@
 .idea
 typings/**
-node_modules
+node_modules/**
 jspm_packages
 npm-debug.log
 link-checker-results.txt
