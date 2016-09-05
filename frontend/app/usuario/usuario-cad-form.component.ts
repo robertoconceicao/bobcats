@@ -15,6 +15,7 @@ export class UsuarioCadFormComponent implements OnInit {
   confirmasenha: string;
   submitted: boolean;
   error: any;
+  success: any;
 
   constructor(
       private router: Router,
@@ -28,7 +29,14 @@ export class UsuarioCadFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.error = this.usuarioService.save(this.usuario);
+    this.usuario.flativo = 1;
+    this.usuarioService.save(this.usuario)
+        .then(success => {
+            this.success = "Salvo com sucesso, efetue o login";
+        })
+        .catch(error => {
+            this.error = "Erro ao criar usuário, favor tentar mais tarde.";
+        });
   }
   // TODO: Remove this when we're done
   get diagnostic() { 

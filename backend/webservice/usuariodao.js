@@ -42,16 +42,19 @@ var _findUsuariosByLogin = function(conn, req, resp) {
 };
 
 var _inserirUsuario = function(conn, req, resp) {
+    console.log("_inserirUsuario: cdusuario: "+req.body.cdusuario + " delogin:"+req.body.delogin +" desenha: "+req.body.desenha + " flativo: "+req.body.flativo);
     var query = "insert into esegusuario (deLogin, deSenha, flAtivo) values (?, ?, ?)";
-    var table = [req.body.deLogin, md5(req.body.deSenha), req.body.flAtivo];
+    var table = [req.body.delogin, md5(req.body.desenha), req.body.flativo];
     query = mysql.format(query, table);
     return conn.query(query, function(err, rows) {
         if (err) {
+            console.log("ERR INSERIR USUARIO: " +err);
             resp.json({
                 "Error": true,
                 "Message": "Error executing MySQL query"
             });
         } else {
+            console.log("SUCCESS INSERIR USUARIO");
             resp.json({
                 "Error": false,
                 "Message": "Success",

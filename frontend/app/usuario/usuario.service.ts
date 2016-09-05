@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsuarioService {
-    private usuarioUrl = '/api/usuario'; //URL to web api
+    private usuarioUrl = 'http://localhost:3000/api/usuario'; //URL to web api
 
     constructor(
         private http: Http
@@ -18,15 +18,15 @@ export class UsuarioService {
                     .catch(this.handleError);
     }
     
-    getUsuario(login: number) {
-        let url = `${this.usuarioUrl}/${login}`;
-        return this.http.get(url)
-                    .toPromise()
-                    .then(response => response.json().data as Usuario)
-                    .catch(this.handleError);        
+    login(usuario: Usuario) {
+        let headers = new Headers({'Content-Type':'application/json'});
+        let url = `${this.usuarioUrl}/login`;        
+        return this.http
+                    .post(url, JSON.stringify(usuario), {headers: headers})
+                    .toPromise();
     }
 
-    save(usuario: Usuario): Promise<Usuario> {
+    save(usuario: Usuario): Promise<any> {
         if(usuario.cdusuario) {
             return this.put(usuario);
         }
@@ -35,8 +35,7 @@ export class UsuarioService {
 
     //Delete
     delete(usuario: Usuario) {
-        let headers = new Headers();
-        headers.append('Content-Type','application/json');
+        let headers = new Headers({'Content-Type':'application/json'});
 
         let url = `${this.usuarioUrl}/${usuario.cdusuario}`;
 
@@ -47,28 +46,24 @@ export class UsuarioService {
     }
 
     //Add
-    private post(usuario: Usuario) : Promise<Usuario> {
+    private post(usuario: Usuario) : Promise<any> {
         let headers = new Headers({'Content-Type':'application/json'});
 
         return this.http
                     .post(this.usuarioUrl, JSON.stringify(usuario),{headers: headers})
-                    .toPromise()
-                    .then(res => res.json())
-                    .catch(this.handleError);
+                    .toPromise();
+                    //.then(res => res.json())
+                    //.catch(this.handleError);
     }
 
     //Edit
-    private put(usuario: Usuario) {
-        let headers = new Headers();
-        headers.append('Content-Type','application/json');
-
+    private put(usuario: Usuario) : Promise<any> {
+        let headers = new Headers({'Content-Type':'application/json'});
         let url = `${this.usuarioUrl}/${usuario.cdusuario}`;
 
         return this.http
                     .put(url, JSON.stringify(usuario), {headers: headers})
-                    .toPromise()
-                    .then(() => usuario)
-                    .catch(this.handleError);
+                    .toPromise();                    
     }
 
     private handleError(error: any){

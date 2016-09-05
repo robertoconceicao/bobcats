@@ -22,8 +22,16 @@ var UsuarioCadFormComponent = (function () {
         this.submitted = false;
     };
     UsuarioCadFormComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.submitted = true;
-        this.error = this.usuarioService.save(this.usuario);
+        this.usuario.flativo = 1;
+        this.usuarioService.save(this.usuario)
+            .then(function (success) {
+            _this.success = "Salvo com sucesso, efetue o login";
+        })
+            .catch(function (error) {
+            _this.error = "Erro ao criar usuário, favor tentar mais tarde.";
+        });
     };
     Object.defineProperty(UsuarioCadFormComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done
