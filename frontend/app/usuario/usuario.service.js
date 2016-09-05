@@ -22,12 +22,12 @@ var UsuarioService = (function () {
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
-    UsuarioService.prototype.getUsuario = function (login) {
-        var url = this.usuarioUrl + "/" + login;
-        return this.http.get(url)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
-            .catch(this.handleError);
+    UsuarioService.prototype.login = function (usuario) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var url = this.usuarioUrl + "/login";
+        return this.http
+            .post(url, JSON.stringify(usuario), { headers: headers })
+            .toPromise();
     };
     UsuarioService.prototype.save = function (usuario) {
         if (usuario.cdusuario) {
@@ -37,8 +37,7 @@ var UsuarioService = (function () {
     };
     //Delete
     UsuarioService.prototype.delete = function (usuario) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var url = this.usuarioUrl + "/" + usuario.cdusuario;
         return this.http
             .delete(url, { headers: headers })

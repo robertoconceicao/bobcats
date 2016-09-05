@@ -12,7 +12,7 @@
         <div class="form-group">
             <label for="login">Login</label>
             <input type="text" class="form-control" id="login" required
-                [(ngModel)]="usuario.delogin" name="delogin" #name="ngModel">
+                [(ngModel)]="usuario.delogin" name="delogin" #name="ngModel" style="text-transform:uppercase">
         </div>
         <div [hidden]="name.valid || name.pristine" 
                 class="alert alert-danger">

@@ -22,17 +22,7 @@ export class UsuarioDetailComponent implements OnInit {
     ) {}
 
    ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-        if(params['id'] !== undefined){
-            let id = +params['id'];
-            this.navigated = true;
-            this.usuarioService.getUsuario(id)
-              .then(usuario => this.usuario = usuario);
-        } else {
-          this.navigated = false;
-          this.usuario = new Usuario();
-        }
-    });
+    
    }
 
    save(){

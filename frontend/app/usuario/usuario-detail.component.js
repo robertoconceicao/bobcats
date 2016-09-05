@@ -20,19 +20,6 @@ var UsuarioDetailComponent = (function () {
         this.navigated = false; // true if navigated here
     }
     UsuarioDetailComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.params.forEach(function (params) {
-            if (params['id'] !== undefined) {
-                var id = +params['id'];
-                _this.navigated = true;
-                _this.usuarioService.getUsuario(id)
-                    .then(function (usuario) { return _this.usuario = usuario; });
-            }
-            else {
-                _this.navigated = false;
-                _this.usuario = new usuario_1.Usuario();
-            }
-        });
     };
     UsuarioDetailComponent.prototype.save = function () {
         var _this = this;
