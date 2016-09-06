@@ -26,8 +26,15 @@ var UsuarioLoginFormComponent = (function () {
         this.submitted = true;
         this.usuario.flativo = 1;
         this.usuarioService.login(this.usuario)
-            .then(function (success) {
-            _this.success = "Login sucesso ...";
+            .then(function (response) {
+            console.log(response.json());
+            if (response.json().Usuarios.length > 0) {
+                _this.success = "Login sucesso ...";
+                _this.usuarioLogado = response.json().Usuarios[0];
+            }
+            else {
+                _this.error = "Erro ao efetuar login, usuario/senha inválido";
+            }
         })
             .catch(function (error) {
             _this.error = "Erro ao efetuar login, usuario/senha inválido";

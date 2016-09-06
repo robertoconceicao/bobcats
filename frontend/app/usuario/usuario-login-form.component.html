@@ -19,10 +19,11 @@
             A senha é obrigatório
         </div>
 
-        <button type="submit" class="btn btn-default" [disabled]="!submitted">Entrar</button>        
+        <button type="submit" class="btn btn-default" [disabled]="submitted">Entrar</button>        
 
         <div *ngIf="success" class="alert alert-success">
-            {{success}}
+            {{success}} <br />
+            {{"cdUsuario: = " +usuarioLogado.cdusuario}}
         </div>
         <div *ngIf="error" class="alert alert-danger">
             {{error}}

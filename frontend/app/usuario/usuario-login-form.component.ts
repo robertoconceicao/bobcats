@@ -15,6 +15,7 @@ export class UsuarioLoginFormComponent implements OnInit {
   submitted: boolean;
   error: any;
   success: any;
+  usuarioLogado: Usuario;
 
   constructor(
       private router: Router,
@@ -30,8 +31,14 @@ export class UsuarioLoginFormComponent implements OnInit {
     this.submitted = true;
     this.usuario.flativo = 1;
     this.usuarioService.login(this.usuario)
-        .then(success => {
-            this.success = "Login sucesso ...";
+        .then(response => {
+           console.log(response.json());           
+           if(response.json().Usuarios.length > 0){
+              this.success = "Login sucesso ...";  
+              this.usuarioLogado = response.json().Usuarios[0] as Usuario;           
+           } else {
+              this.error = "Erro ao efetuar login, usuario/senha inválido"; 
+           }
         })
         .catch(error => {
             this.error = "Erro ao efetuar login, usuario/senha inválido";

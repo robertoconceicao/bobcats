@@ -15,6 +15,7 @@ var UsuarioService = (function () {
     function UsuarioService(http) {
         this.http = http;
         this.usuarioUrl = 'http://localhost:3000/api/usuario'; //URL to web api
+        this.loginUrl = 'http://localhost:3000/api/usuariologin'; //URL to web api
     }
     UsuarioService.prototype.getUsuarios = function () {
         return this.http.get(this.usuarioUrl)
@@ -24,9 +25,8 @@ var UsuarioService = (function () {
     };
     UsuarioService.prototype.login = function (usuario) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var url = this.usuarioUrl + "/login";
         return this.http
-            .post(url, JSON.stringify(usuario), { headers: headers })
+            .put(this.loginUrl, JSON.stringify(usuario), { headers: headers })
             .toPromise();
     };
     UsuarioService.prototype.save = function (usuario) {

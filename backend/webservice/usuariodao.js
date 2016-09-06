@@ -106,16 +106,19 @@ var _excluirUsuario = function(conn, req, resp) {
 };
 
 var _validaUsuario = function(conn, req, resp) {
+    console.log("validaUsuario - delogin: "+req.body.delogin+" desenha: "+req.body.desenha);
     var query = "select * from esegusuario where delogin = ? and deSenha = ?";
     var table = [req.body.delogin, md5(req.body.desenha)];
     query = mysql.format(query, table);
     return conn.query(query, function(err, rows) {
         if (err) {
+            console.log("ERRO: validaUsuario ");
             resp.json({
                 "Error": true,
                 "Message": "Error executing MySQL query"
             });
         } else {
+            console.log("SUCCESS: validaUsuario ");
             resp.json({
                 "Error": false,
                 "Message": "Success",

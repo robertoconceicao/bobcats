@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class UsuarioService {
     private usuarioUrl = 'http://localhost:3000/api/usuario'; //URL to web api
+    private loginUrl = 'http://localhost:3000/api/usuariologin'; //URL to web api
 
     constructor(
         private http: Http
@@ -19,10 +20,9 @@ export class UsuarioService {
     }
     
     login(usuario: Usuario) {
-        let headers = new Headers({'Content-Type':'application/json'});
-        let url = `${this.usuarioUrl}/login`;        
+        let headers = new Headers({'Content-Type':'application/json'});                
         return this.http
-                    .post(url, JSON.stringify(usuario), {headers: headers})
+                    .put(this.loginUrl, JSON.stringify(usuario), {headers: headers})
                     .toPromise();
     }
 
