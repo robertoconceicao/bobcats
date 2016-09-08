@@ -29,7 +29,7 @@ export class UsuarioLoginFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.usuario.flativo = 1;
+    this.usuario.flAtivo = 1;
     this.usuarioService.login(this.usuario)
         .then(response => {
            console.log(response.json());           

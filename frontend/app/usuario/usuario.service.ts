@@ -27,7 +27,7 @@ export class UsuarioService {
     }
 
     save(usuario: Usuario): Promise<any> {
-        if(usuario.cdusuario) {
+        if(usuario.cdUsuario) {
             return this.put(usuario);
         }
         return this.post(usuario);
@@ -37,7 +37,7 @@ export class UsuarioService {
     delete(usuario: Usuario) {
         let headers = new Headers({'Content-Type':'application/json'});
 
-        let url = `${this.usuarioUrl}/${usuario.cdusuario}`;
+        let url = `${this.usuarioUrl}/${usuario.cdUsuario}`;
 
         return this.http
                     .delete(url, {headers: headers})
@@ -59,7 +59,7 @@ export class UsuarioService {
     //Edit
     private put(usuario: Usuario) : Promise<any> {
         let headers = new Headers({'Content-Type':'application/json'});
-        let url = `${this.usuarioUrl}/${usuario.cdusuario}`;
+        let url = `${this.usuarioUrl}/${usuario.cdUsuario}`;
 
         return this.http
                     .put(url, JSON.stringify(usuario), {headers: headers})

@@ -12,7 +12,7 @@
         <div class="form-group">
             <label for="login">Login</label>
             <input type="text" class="form-control" id="login" required
-                [(ngModel)]="usuario.delogin" name="delogin" #name="ngModel" style="text-transform:uppercase">
+                [(ngModel)]="usuario.deLogin" name="delogin" #name="ngModel" style="text-transform:uppercase">
         </div>
         <div [hidden]="name.valid || name.pristine" 
                 class="alert alert-danger">
@@ -22,7 +22,7 @@
         <div class="form-group">
             <label for="senha">Senha</label>
             <input type="password" class="form-control" id="senha" required
-                [(ngModel)]="usuario.desenha" name="senha">
+                [(ngModel)]="usuario.deSenha" name="senha">
         </div>
         <div class="form-group">
             <label for="confirmasenha">Confrima Senha</label>

@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="onSubmit()" #usuarioForm="ngForm" >
     <h1>Fotos ....</h1>
     <div class="form-group">
         <label for="foto">File input</label>
@@ -6,22 +6,38 @@
         <p class="help-block">Add fotos.</p>
     </div>
     <hr />    
+  
+  <input type="hidden" class="form-control" id="cdUsuario"
+      [(ngModel)]="sujeito.usuario.cdUsuario" #cdUsuario="ngModel" >
+
+
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input type="text" class="form-control" id="nome" placeholder="Nome">
+    <input type="text" class="form-control" id="nome" placeholder="Nome"
+      required [(ngModel)]="sujeito.nmSujeito" name="nmSujeito" #nmSujeito="ngModel">
   </div>
+  <div [hidden]="nmSujeito.valid " class="alert alert-danger">
+      O Campo Nome é obrigatório
+  </div>
+
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="Email">
+    <input type="email" class="form-control" id="email" placeholder="Email"
+      required [(ngModel)]="sujeito.deEmail" name="email" #email="ngModel">
   </div>
-  <div class="form-group">
-    <label for="senha">Senha</label>
-    <input type="password" class="form-control" id="senha" placeholder="Senha">
+  <div [hidden]="email.valid " class="alert alert-danger">
+      O Campo Email é obrigatório
   </div>
+
   <div class="form-group">
-    <label for="confirmaSenha">Confirma Senha</label>
-    <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirma Senha">
-  </div>  
+    <label for="dtNascimento">Data de Nascimento</label>
+    TODO
+  </div>
+
+    public flSexo: string;
+    public nuTelefone: string;  
+
+
   <div class="form-group">
     <label for="aparencia">Aparência</label>
     <textarea class="form-control" rows="3"></textarea>
@@ -41,7 +57,7 @@
   </div>
   <div class="form-group">
     Testando componente municipio <br />
-    <localizacao></localizacao>
+    <localizacao [(ngModel)]="sujeito.municipio"></localizacao>
   </div>
   <button type="submit" class="btn btn-success">Salvar Informações</button>
 </form>

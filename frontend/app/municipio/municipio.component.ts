@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 
 export class MunicipioComponent implements OnInit {
     
-    selectedMunicipio: Municipio;    
+    @Input() selectedMunicipio: Municipio;    
     municipios: Observable<Municipio[]>;
 
     private searchTerms = new Subject<string>();
