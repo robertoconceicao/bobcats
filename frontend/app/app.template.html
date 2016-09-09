@@ -1,33 +1,39 @@
-<ul class="topnav" id="myTopnav">
-  <li><a href="#">Meu Perfil</a></li>
-  <li><a href="#">Por perto</a></li>
-  
-  <li><a routerLink="/mensagens" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-weixin">Mensagens</span></a></li>
-  <li><a routerLink="/dashboard" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-home">Dashboard</span></a></li>
-  <li><a routerLink="/usuarios" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Usuarios</span></a></li>
-  <li><a routerLink="/municipio" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Localizacao</span></a></li>
-  <li><a routerLink="/login" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Login</span></a></li>
-  <li><a routerLink="/cad_usuario" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Novo Usuário</span></a></li>
-  <li class="icon">
-    <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
-  </li>
-  <li>
-	<a  (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</a>
- 	<a  (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</a>			
-  </li>
 
-</ul>
+<div *ngIf="login.authenticated()"> 
+  <ul class="topnav" id="myTopnav">
+    <li><a href="#">Meu Perfil</a></li>
+    <li><a href="#">Por perto</a></li>
+    
+    <li><a routerLink="/mensagens" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-weixin">Mensagens</span></a></li>
+    <li><a routerLink="/dashboard" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-home">Dashboard</span></a></li>
+    <li><a routerLink="/usuarios" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Usuarios</span></a></li>
+    <li><a routerLink="/municipio" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Localizacao</span></a></li>
+    <li><a routerLink="/login" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Login</span></a></li>
+    <li><a routerLink="/cad_usuario" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Novo Usuário</span></a></li>
+    <li class="icon">
+      <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+    </li>
+    <li>
+    
+    <a  (click)="login.logout()" ><span class="glyphicon glyphicon-log-out">Sair</span></a>			
+    </li>
 
-<router-outlet></router-outlet>
+  </ul>
 
-<br />
-<br />
-<hr />
-<!-- Footer -->
-<div id="footer" class="text-center">
-	<!-- Copyright -->  
-    <p class="copyright">
-      &copy; BobCats. Todos os direitos reservados.<br />
-      Design: <a href="#">BobCats</a><br />
-    </p>  
+  <router-outlet></router-outlet>
+
+  <br />
+  <br />
+  <hr />
+  <!-- Footer -->
+  <div id="footer" class="text-center">
+    <!-- Copyright -->  
+      <p class="copyright">
+        &copy; BobCats. Todos os direitos reservados.<br />
+        Design: <a href="#">BobCats</a><br />
+      </p>  
+  </div>
+</div>
+<div *ngIf="!login.authenticated()">
+    <login-form></login-form>
 </div>

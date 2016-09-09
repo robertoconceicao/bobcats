@@ -118,7 +118,7 @@ var _validaUsuario = function(conn, req, resp) {
                 "Message": "Error executing MySQL query"
             });
         } else {
-            console.log("SUCCESS: validaUsuario ");
+            console.log("SUCCESS: validaUsuario "+rows.length);
             resp.json({
                 "Error": false,
                 "Message": "Success",

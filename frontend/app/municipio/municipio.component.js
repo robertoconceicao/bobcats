@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var municipio_1 = require('../classes/municipio');
 var municipio_service_1 = require('./municipio.service');
 var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
@@ -41,6 +42,10 @@ var MunicipioComponent = (function () {
         console.log("Chamando metodo: onSelectedMunicipio " + municipio);
         this.selectedMunicipio = municipio;
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', municipio_1.Municipio)
+    ], MunicipioComponent.prototype, "selectedMunicipio", void 0);
     MunicipioComponent = __decorate([
         core_1.Component({
             selector: 'localizacao',

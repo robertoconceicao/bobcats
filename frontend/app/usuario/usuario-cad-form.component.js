@@ -24,7 +24,7 @@ var UsuarioCadFormComponent = (function () {
     UsuarioCadFormComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submitted = true;
-        this.usuario.flativo = 1;
+        this.usuario.flAtivo = 1;
         this.usuarioService.save(this.usuario)
             .then(function (success) {
             _this.success = "Salvo com sucesso, efetue o login";
@@ -42,8 +42,8 @@ var UsuarioCadFormComponent = (function () {
         configurable: true
     });
     UsuarioCadFormComponent.prototype.senhasIguais = function () {
-        if (!!this.usuario.desenha && !!this.confirmasenha) {
-            return this.usuario.desenha === this.confirmasenha;
+        if (!!this.usuario.deSenha && !!this.confirmasenha) {
+            return this.usuario.deSenha === this.confirmasenha;
         }
         return true;
     };
