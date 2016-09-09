@@ -16,6 +16,330 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ectbpagtos`
+--
+
+DROP TABLE IF EXISTS `ectbpagtos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ectbpagtos` (
+  `cdPagtos` int(11) NOT NULL,
+  `dtPagtos` datetime DEFAULT NULL,
+  `flPagto` varchar(1) DEFAULT NULL,
+  `cdSujeito` int(11) NOT NULL,
+  PRIMARY KEY (`cdPagtos`),
+  KEY `fk_ectbpagtos_egrlsujeito1_idx` (`cdSujeito`),
+  CONSTRAINT `fk_ectbpagtos_egrlsujeito1` FOREIGN KEY (`cdSujeito`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ectbpagtos`
+--
+
+LOCK TABLES `ectbpagtos` WRITE;
+/*!40000 ALTER TABLE `ectbpagtos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ectbpagtos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlavaliacao`
+--
+
+DROP TABLE IF EXISTS `egrlavaliacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlavaliacao` (
+  `cdAvaliacao` int(11) NOT NULL,
+  `nuNota` decimal(10,0) DEFAULT NULL,
+  `cdItemavaliacao` int(11) NOT NULL,
+  `cdAvaliacaosujeito` int(11) NOT NULL,
+  PRIMARY KEY (`cdAvaliacao`),
+  KEY `fk_egrlavaliacao_egrlitensavaliacao1_idx` (`cdItemavaliacao`),
+  KEY `fk_egrlavaliacao_egrlavaliacaosujeito1_idx` (`cdAvaliacaosujeito`),
+  CONSTRAINT `fk_egrlavaliacao_egrlavaliacaosujeito1` FOREIGN KEY (`cdAvaliacaosujeito`) REFERENCES `egrlavaliacaosujeito` (`cdAvaliacaosujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_egrlavaliacao_egrlitensavaliacao1` FOREIGN KEY (`cdItemavaliacao`) REFERENCES `egrlitensavaliacao` (`cdItemavaliacao`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlavaliacao`
+--
+
+LOCK TABLES `egrlavaliacao` WRITE;
+/*!40000 ALTER TABLE `egrlavaliacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlavaliacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlavaliacaosujeito`
+--
+
+DROP TABLE IF EXISTS `egrlavaliacaosujeito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlavaliacaosujeito` (
+  `cdAvaliacaosujeito` int(11) NOT NULL,
+  `tpSituacao` varchar(1) DEFAULT NULL,
+  `nuNota` decimal(10,0) DEFAULT NULL,
+  `dtCadastro` datetime DEFAULT NULL,
+  `dtAvaliacao` datetime DEFAULT NULL,
+  `cdSujeitoavaliador` int(11) NOT NULL,
+  `cdSujeitoavaliado` int(11) NOT NULL,
+  PRIMARY KEY (`cdAvaliacaosujeito`),
+  KEY `fk_egrlavaliacaosujeito_egrlsujeito1_idx` (`cdSujeitoavaliador`),
+  KEY `fk_egrlavaliacaosujeito_egrlsujeito2_idx` (`cdSujeitoavaliado`),
+  CONSTRAINT `fk_egrlavaliacaosujeito_egrlsujeito1` FOREIGN KEY (`cdSujeitoavaliador`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_egrlavaliacaosujeito_egrlsujeito2` FOREIGN KEY (`cdSujeitoavaliado`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlavaliacaosujeito`
+--
+
+LOCK TABLES `egrlavaliacaosujeito` WRITE;
+/*!40000 ALTER TABLE `egrlavaliacaosujeito` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlavaliacaosujeito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlchat`
+--
+
+DROP TABLE IF EXISTS `egrlchat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlchat` (
+  `cdChat` int(11) NOT NULL,
+  `deMensagem` varchar(100) DEFAULT NULL,
+  `dtMensagem` datetime DEFAULT NULL,
+  `flLido` varchar(1) DEFAULT NULL,
+  `dtExclusao` datetime DEFAULT NULL,
+  `cdSujeitodestino` int(11) NOT NULL,
+  `cdSujeitoorigem` int(11) NOT NULL,
+  PRIMARY KEY (`cdChat`),
+  KEY `fk_egrlchat_egrlsujeito1_idx` (`cdSujeitodestino`),
+  KEY `fk_egrlchat_egrlsujeito2_idx` (`cdSujeitoorigem`),
+  CONSTRAINT `fk_egrlchat_egrlsujeito1` FOREIGN KEY (`cdSujeitodestino`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_egrlchat_egrlsujeito2` FOREIGN KEY (`cdSujeitoorigem`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlchat`
+--
+
+LOCK TABLES `egrlchat` WRITE;
+/*!40000 ALTER TABLE `egrlchat` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlchat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlcomentarios`
+--
+
+DROP TABLE IF EXISTS `egrlcomentarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlcomentarios` (
+  `cdComentario` int(11) NOT NULL,
+  `deComentario` varchar(200) DEFAULT NULL,
+  `dtComentario` datetime DEFAULT NULL,
+  `tpSituacao` varchar(1) DEFAULT NULL COMMENT '1 - Aguardando aprovacao\\n2 - Aprovado\\n3 - Excluido',
+  `cdSujeitoorigem` int(11) NOT NULL,
+  `cdSujeitodestino` int(11) NOT NULL,
+  PRIMARY KEY (`cdComentario`),
+  KEY `fk_egrlcomentarios_egrlsujeito1_idx` (`cdSujeitoorigem`),
+  KEY `fk_egrlcomentarios_egrlsujeito2_idx` (`cdSujeitodestino`),
+  CONSTRAINT `fk_egrlcomentarios_egrlsujeito1` FOREIGN KEY (`cdSujeitoorigem`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_egrlcomentarios_egrlsujeito2` FOREIGN KEY (`cdSujeitodestino`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlcomentarios`
+--
+
+LOCK TABLES `egrlcomentarios` WRITE;
+/*!40000 ALTER TABLE `egrlcomentarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlcomentarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrldadossujeito`
+--
+
+DROP TABLE IF EXISTS `egrldadossujeito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrldadossujeito` (
+  `cdDadossujeito` int(11) NOT NULL,
+  `tpPele` varchar(45) DEFAULT NULL COMMENT '1 - Clara\\n2 - Morena\\n3 - Mulata\\n4 - Negra',
+  `nuAltura` varchar(45) DEFAULT NULL,
+  `nuPeso` varchar(45) DEFAULT NULL,
+  `tpCabelo` varchar(45) DEFAULT NULL,
+  `tpAtendimento` varchar(45) DEFAULT NULL COMMENT '1 - Só Homens\\n2 - Só Mulheres\\n3 - Homens e Mulheres\\n4 - Casais',
+  `nmFantasia` varchar(45) DEFAULT NULL,
+  `tpInteresse` varchar(45) DEFAULT NULL COMMENT '1 - Homens\\n2 - Mulheres\\n3 - Homens/Mulheres',
+  `deHorariodisponibilidade` varchar(45) DEFAULT NULL,
+  `cdSujeito` int(11) NOT NULL,
+  PRIMARY KEY (`cdDadossujeito`),
+  KEY `fk_egrlDadossujeito_egrlSujeito_idx` (`cdDadossujeito`),
+  KEY `fk_egrldadossujeito_egrlsujeito1_idx` (`cdSujeito`),
+  CONSTRAINT `fk_egrldadossujeito_egrlsujeito1` FOREIGN KEY (`cdSujeito`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrldadossujeito`
+--
+
+LOCK TABLES `egrldadossujeito` WRITE;
+/*!40000 ALTER TABLE `egrldadossujeito` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrldadossujeito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlfotos`
+--
+
+DROP TABLE IF EXISTS `egrlfotos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlfotos` (
+  `cdFoto` int(11) NOT NULL,
+  `deFoto` varchar(50) DEFAULT NULL,
+  `nuTamfoto` int(11) DEFAULT NULL,
+  `nuOrdem` int(11) DEFAULT NULL,
+  `cdSujeito` int(11) NOT NULL,
+  `blFoto` longtext,
+  PRIMARY KEY (`cdFoto`),
+  KEY `fk_egrlgaleria_egrlsujeito1_idx` (`cdSujeito`),
+  CONSTRAINT `fk_egrlgaleria_egrlsujeito1` FOREIGN KEY (`cdSujeito`) REFERENCES `egrlsujeito` (`cdSujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlfotos`
+--
+
+LOCK TABLES `egrlfotos` WRITE;
+/*!40000 ALTER TABLE `egrlfotos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlfotos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlitensavaliacao`
+--
+
+DROP TABLE IF EXISTS `egrlitensavaliacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlitensavaliacao` (
+  `cdItemavaliacao` int(11) NOT NULL,
+  `deItemavaliacao` varchar(100) DEFAULT NULL,
+  `vlPesoavaliacao` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`cdItemavaliacao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlitensavaliacao`
+--
+
+LOCK TABLES `egrlitensavaliacao` WRITE;
+/*!40000 ALTER TABLE `egrlitensavaliacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlitensavaliacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlmidiasocial`
+--
+
+DROP TABLE IF EXISTS `egrlmidiasocial`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlmidiasocial` (
+  `cdMidiasocial` int(11) NOT NULL,
+  `nmMidiasocial` varchar(45) DEFAULT NULL,
+  `flAtivo` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`cdMidiasocial`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlmidiasocial`
+--
+
+LOCK TABLES `egrlmidiasocial` WRITE;
+/*!40000 ALTER TABLE `egrlmidiasocial` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlmidiasocial` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlmidiasujeito`
+--
+
+DROP TABLE IF EXISTS `egrlmidiasujeito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlmidiasujeito` (
+  `cdMidiasujeito` int(11) NOT NULL,
+  `deUrl` varchar(100) DEFAULT NULL,
+  `cdMidiasocial` int(11) NOT NULL,
+  `cdDadossujeito` int(11) NOT NULL,
+  PRIMARY KEY (`cdMidiasujeito`),
+  KEY `fk_egrlmidiasujeito_egrlmidiasocial1_idx` (`cdMidiasocial`),
+  KEY `fk_egrlmidiasujeito_egrldadossujeito1_idx` (`cdDadossujeito`),
+  CONSTRAINT `fk_egrlmidiasujeito_egrldadossujeito1` FOREIGN KEY (`cdDadossujeito`) REFERENCES `egrldadossujeito` (`cdDadossujeito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_egrlmidiasujeito_egrlmidiasocial1` FOREIGN KEY (`cdMidiasocial`) REFERENCES `egrlmidiasocial` (`cdMidiasocial`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlmidiasujeito`
+--
+
+LOCK TABLES `egrlmidiasujeito` WRITE;
+/*!40000 ALTER TABLE `egrlmidiasujeito` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlmidiasujeito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `egrlsujeito`
+--
+
+DROP TABLE IF EXISTS `egrlsujeito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `egrlsujeito` (
+  `cdSujeito` int(11) NOT NULL AUTO_INCREMENT,
+  `cdUsuario` int(11) NOT NULL,
+  `cdmunicipio` int(11) NOT NULL,
+  `nmSujeito` varchar(45) DEFAULT NULL,
+  `dtNascimento` varchar(45) DEFAULT NULL,
+  `flSexo` varchar(45) DEFAULT NULL COMMENT 'M - Masculino\\nF - Feminino',
+  `nuTelefone` varchar(45) DEFAULT NULL,
+  `deEmail` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`cdSujeito`),
+  KEY `fk_egrlsujeito_esegusuario1_idx` (`cdUsuario`),
+  KEY `fk_egrlsujeito_epadmunicipio1_idx` (`cdmunicipio`),
+  CONSTRAINT `fk_egrlsujeito_epadmunicipio1` FOREIGN KEY (`cdmunicipio`) REFERENCES `epadmunicipio` (`cdmunicipio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_egrlsujeito_esegusuario1` FOREIGN KEY (`cdUsuario`) REFERENCES `esegusuario` (`cdUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `egrlsujeito`
+--
+
+LOCK TABLES `egrlsujeito` WRITE;
+/*!40000 ALTER TABLE `egrlsujeito` DISABLE KEYS */;
+/*!40000 ALTER TABLE `egrlsujeito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `epadestado`
 --
 
@@ -25,12 +349,15 @@ DROP TABLE IF EXISTS `epadestado`;
 CREATE TABLE `epadestado` (
   `cdestado` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `cdpais` int(4) NOT NULL COMMENT 'Country',
-  `cdregiao` int(11) NOT NULL COMMENT 'Region',
   `nmestado` varchar(35) NOT NULL COMMENT 'Title',
   `sgestado` char(2) NOT NULL COMMENT 'Letter State',
   `iso` int(2) NOT NULL COMMENT 'Code ISO',
+  `cdregiao` int(11) NOT NULL,
   PRIMARY KEY (`cdestado`),
-  KEY `FK_id_country_state` (`cdpais`)
+  KEY `FK_id_country_state` (`cdpais`),
+  KEY `fk_epadestado_epadregiao1_idx` (`cdregiao`),
+  CONSTRAINT `FK_id_country_state` FOREIGN KEY (`cdpais`) REFERENCES `epadpais` (`cdpais`),
+  CONSTRAINT `fk_epadestado_epadregiao1` FOREIGN KEY (`cdregiao`) REFERENCES `epadregiao` (`cdregiao`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='Tabela de Cadastro de ESTADOS';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +367,7 @@ CREATE TABLE `epadestado` (
 
 LOCK TABLES `epadestado` WRITE;
 /*!40000 ALTER TABLE `epadestado` DISABLE KEYS */;
-INSERT INTO `epadestado` VALUES (1,31,1,'Acre','AC',12),(2,31,2,'Alagoas','AL',27),(3,31,1,'Amazonas','AM',13),(4,31,1,'Amapá','AP',16),(5,31,2,'Bahia','BA',29),(6,31,2,'Ceará','CE',23),(7,31,5,'Distrito Federal','DF',53),(8,31,3,'Espírito Santo','ES',32),(9,31,5,'Goiás','GO',52),(10,31,2,'Maranhão','MA',21),(11,31,3,'Minas Gerais','MG',31),(12,31,5,'Mato Grosso do Sul','MS',50),(13,31,5,'Mato Grosso','MT',51),(14,31,1,'Pará','PA',15),(15,31,2,'Paraiba','PB',25),(16,31,2,'Pernambuco','PE',26),(17,31,2,'Piauí','PI',22),(18,31,4,'Paraná','PR',41),(19,31,3,'Rio de Janeiro','RJ',33),(20,31,2,'Rio Grande do Norte','RN',24),(21,31,1,'Rondônia','RO',11),(22,31,1,'Roraima','RR',14),(23,31,4,'Rio Grande do Sul','RS',43),(24,31,4,'Santa Catarina','SC',42),(25,31,2,'Sergipe','SE',28),(26,31,3,'São Paulo','SP',35),(27,31,1,'Tocantins','TO',17);
+INSERT INTO `epadestado` VALUES (1,31,'Acre','AC',12,0),(2,31,'Alagoas','AL',27,0),(3,31,'Amazonas','AM',13,0),(4,31,'Amapá','AP',16,0),(5,31,'Bahia','BA',29,0),(6,31,'Ceará','CE',23,0),(7,31,'Distrito Federal','DF',53,0),(8,31,'Espírito Santo','ES',32,0),(9,31,'Goiás','GO',52,0),(10,31,'Maranhão','MA',21,0),(11,31,'Minas Gerais','MG',31,0),(12,31,'Mato Grosso do Sul','MS',50,0),(13,31,'Mato Grosso','MT',51,0),(14,31,'Pará','PA',15,0),(15,31,'Paraiba','PB',25,0),(16,31,'Pernambuco','PE',26,0),(17,31,'Piauí','PI',22,0),(18,31,'Paraná','PR',41,0),(19,31,'Rio de Janeiro','RJ',33,0),(20,31,'Rio Grande do Norte','RN',24,0),(21,31,'Rondônia','RO',11,0),(22,31,'Roraima','RR',14,0),(23,31,'Rio Grande do Sul','RS',43,0),(24,31,'Santa Catarina','SC',42,0),(25,31,'Sergipe','SE',28,0),(26,31,'São Paulo','SP',35,0),(27,31,'Tocantins','TO',17,0);
 /*!40000 ALTER TABLE `epadestado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +385,8 @@ CREATE TABLE `epadmunicipio` (
   `cdibge` int(8) NOT NULL COMMENT 'Code ISO',
   `nuddd` varchar(6) NOT NULL COMMENT 'DDD ISO',
   PRIMARY KEY (`cdmunicipio`),
-  KEY `FK_id_state_city` (`cdestado`)
+  KEY `FK_id_state_city` (`cdestado`),
+  CONSTRAINT `FK_id_state_city` FOREIGN KEY (`cdestado`) REFERENCES `epadestado` (`cdestado`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -106,10 +434,8 @@ DROP TABLE IF EXISTS `epadregiao`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `epadregiao` (
   `cdregiao` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `id_language` int(11) DEFAULT NULL COMMENT 'Language',
   `nmregiao` varchar(80) DEFAULT NULL COMMENT 'Title',
-  PRIMARY KEY (`cdregiao`),
-  KEY `id_language_region` (`id_language`)
+  PRIMARY KEY (`cdregiao`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -119,36 +445,8 @@ CREATE TABLE `epadregiao` (
 
 LOCK TABLES `epadregiao` WRITE;
 /*!40000 ALTER TABLE `epadregiao` DISABLE KEYS */;
-INSERT INTO `epadregiao` VALUES (1,167,'Norte'),(2,167,'Nordeste'),(3,167,'Sudeste'),(4,167,'Sul'),(5,167,'Centro-Oeste');
+INSERT INTO `epadregiao` VALUES (1,'Norte'),(2,'Nordeste'),(3,'Sudeste'),(4,'Sul'),(5,'Centro-Oeste');
 /*!40000 ALTER TABLE `epadregiao` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `epadzona`
---
-
-DROP TABLE IF EXISTS `epadzona`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `epadzona` (
-  `cdZona` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `id_state` int(11) NOT NULL COMMENT 'State',
-  `deZona` varchar(80) NOT NULL COMMENT 'Title',
-  `iso` varchar(80) NOT NULL COMMENT 'ISO Code',
-  `iso_name` varchar(80) NOT NULL COMMENT 'ISO Name',
-  PRIMARY KEY (`cdZona`),
-  KEY `id_state_region` (`id_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `epadzona`
---
-
-LOCK TABLES `epadzona` WRITE;
-/*!40000 ALTER TABLE `epadzona` DISABLE KEYS */;
-INSERT INTO `epadzona` VALUES (1,1,'Acre','68','DDD'),(2,2,'Alagoas','82','DDD'),(3,3,'Região de Manaus','92','DDD'),(4,3,'Leste do Amazonas','97','DDD'),(5,4,'Amapá','96','DDD'),(6,5,'Salvador','71','DDD'),(7,5,'Sul da Bahia','73','DDD'),(8,5,'Juazeiro, Jacobina e região','74','DDD'),(9,5,'F. de Santana, Alagoinhas e região','75','DDD'),(10,5,'V da Conquista, Barreiras e região','77','DDD'),(11,6,'Fortaleza e região','85','DDD'),(12,6,'Juazeiro do Norte, Sobral e região','88','DDD'),(13,7,'Distrito Federal e região','61','DDD'),(14,8,'Norte do Espírito Santo','27','DDD'),(15,8,'Sul do Espírito Santo','28','DDD'),(16,9,'Grande Goiânia e Anápolis','62','DDD'),(17,9,'Rio Verde, Caldas Novas e região','64','DDD'),(18,10,'Região de São Luís','98','DDD'),(19,10,'Imperatriz, Caxias e região','99','DDD'),(20,11,'Belo Horizonte e região','31','DDD'),(21,11,'Juiz de Fora e região','32','DDD'),(22,11,'Gov. Valadares, T. Otoni e região','33','DDD'),(23,11,'Uberlândia, Uberaba e região','34','DDD'),(24,11,'Poços de Caldas e Varginha','35','DDD'),(25,11,'Divinópolis e região','37','DDD'),(26,11,'Mtes Claros, Diamantina e região','38','DDD'),(27,12,'Mato Grosso do Sul','67','DDD'),(28,13,'Cuiabá e região','65','DDD'),(29,13,'Rondonópolis, Sinop e região','66','DDD'),(30,14,'Região de Belém','91','DDD'),(31,14,'Região de Santarém','93','DDD'),(32,14,'Região de Marabá','94','DDD'),(33,15,'Paraíba','83','DDD'),(34,16,'Grande Recife','81','DDD'),(35,16,'Petrolina, Garanhuns e região','87','DDD'),(36,17,'Teresina, Parnaíba e região','86','DDD'),(37,17,'Picos, Floriano e região','89','DDD'),(38,18,'Curitiba e região','41','DDD'),(39,18,'Pta Grossa, Guarapuava e região','42','DDD'),(40,18,'Londrina e região','43','DDD'),(41,18,'Maringá e região','44','DDD'),(42,18,'Foz do Iguaçu, Cascavel e região','45','DDD'),(43,18,'F. Beltrão e Pato Branco e região','46','DDD'),(44,19,'Rio de Janeiro e região','21','DDD'),(45,19,'Norte do Estado e Região dos Lagos','22','DDD'),(46,19,'Serra, Angra dos Reis e região','24','DDD'),(47,20,'Rio Grande do Norte','84','DDD'),(48,21,'Rondônia','69','DDD'),(49,22,'Roraima','95','DDD'),(50,23,'Porto Alegre e região','51','DDD'),(51,23,'Pelotas, Bagé, Rio Gde e região','53','DDD'),(52,23,'Caxias do Sul e região','54','DDD'),(53,23,'Sta Maria, Cruz Alta e região','55','DDD'),(54,24,'Norte de Santa Catarina','47','DDD'),(55,24,'Florianópolis e região','48','DDD'),(56,24,'Oeste de Santa Catarina','49','DDD'),(57,25,'Sergipe','79','DDD'),(58,26,'São Paulo e região','11','DDD'),(59,26,'V. do Paraíba e Litoral Norte','12','DDD'),(60,26,'Baixada Santista e Litoral Sul','13','DDD'),(61,26,'Bauru, Marília e região','14','DDD'),(62,26,'Sorocaba e região','15','DDD'),(63,26,'Ribeirão Preto e região','16','DDD'),(64,26,'S. José do Rio Preto e região','17','DDD'),(65,26,'Presidente Prudente e região','18','DDD'),(66,26,'Grande Campinas','19','DDD'),(67,27,'Tocantins','63','DDD');
-/*!40000 ALTER TABLE `epadzona` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -186,4 +484,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-09 13:36:22
+-- Dump completed on 2016-09-09 16:05:53
