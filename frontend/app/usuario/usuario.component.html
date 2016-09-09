@@ -33,31 +33,29 @@
     <label for="dtNascimento">Data de Nascimento</label>
     TODO
   </div>
-
-    public flSexo: string;
-    public nuTelefone: string;  
-
+  
+  <div class="form-group">
+    <select [(ngModel)]="sujeito.flSexo" class="form-control">
+      <option [value]="F">Fêminino</option>
+      <option [value]="M">Masculino</option>    
+    </select>
+  </div>
 
   <div class="form-group">
-    <label for="aparencia">Aparência</label>
-    <textarea class="form-control" rows="3"></textarea>
-  </div>
-  <div class="checkbox">
-    <span>Serviços Prestado:</span>  
-    <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> Serviço 1
-    </label>
-    <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> Serviço 2
-    </label>
-    <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> Serviço 3
-    </label>    
-    ....
-  </div>
-  <div class="form-group">
-    Testando componente municipio <br />
+    <label for="nuTelefone">Telefone</label>
+    <input type="nuTelefone" class="form-control" id="nuTelefone" placeholder="(DDD) 99999999"
+      required [(ngModel)]="sujeito.nuTelefone" name="nuTelefone" #nuTelefone="ngModel">
+  </div>    
+  
+  <div class="form-group">    
     <localizacao [(ngModel)]="sujeito.municipio"></localizacao>
   </div>
-  <button type="submit" class="btn btn-success">Salvar Informações</button>
+  
+  <button type="submit" class="btn btn-success" [disabled]="submitted">Salvar Informações</button>
+  <div *ngIf="success" class="alert alert-success">
+      {{success}}      
+  </div>
+  <div *ngIf="error" class="alert alert-danger">
+      {{error}}
+  </div>
 </form>

@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var sujeito_1 = require('../classes/sujeito');
 var usuario_service_1 = require('./usuario.service');
 var router_1 = require('@angular/router');
 var UsuarioComponent = (function () {
@@ -16,17 +17,26 @@ var UsuarioComponent = (function () {
         this.router = router;
         this.usuarioService = usuarioService;
     }
-    UsuarioComponent.prototype.getUsuarios = function () {
-        // this.usuarioService.getUsuarios().then(usuarios => this.usuarios = usuarios);
-    };
     UsuarioComponent.prototype.ngOnInit = function () {
-        this.getUsuarios();
+        this.sujeito = new sujeito_1.Sujeito();
+        this.submitted = false;
     };
-    UsuarioComponent.prototype.onSelect = function (usuario) {
-        this.selectedUsuario = usuario;
-    };
-    UsuarioComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['/detail', this.selectedUsuario.cdusuario]);
+    UsuarioComponent.prototype.onSubmit = function () {
+        var _this = this;
+        this.submitted = false;
+        this.usuarioService.saveSujeito(this.sujeito)
+            .then(function (response) {
+            console.log(response.json());
+            if (response.json().Sujeito.length > 0) {
+                _this.success = "Dados cadastrado com sucesso ...";
+            }
+            else {
+                _this.error = "Erro ao salvar os dados";
+            }
+        })
+            .catch(function (error) {
+            _this.error = "Erro ao salvar os dados";
+        });
     };
     UsuarioComponent = __decorate([
         core_1.Component({

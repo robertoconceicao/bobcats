@@ -16,6 +16,7 @@ var UsuarioService = (function () {
         this.http = http;
         this.usuarioUrl = 'http://localhost:3000/api/usuario'; //URL to web api
         this.loginUrl = 'http://localhost:3000/api/usuariologin'; //URL to web api
+        this.sujeitoUrl = 'http://localhost:3000/api/sujeito'; //URL to web api
     }
     UsuarioService.prototype.getUsuarios = function () {
         return this.http.get(this.usuarioUrl)
@@ -30,15 +31,21 @@ var UsuarioService = (function () {
             .toPromise();
     };
     UsuarioService.prototype.save = function (usuario) {
-        if (usuario.cdusuario) {
+        if (usuario.cdUsuario) {
             return this.put(usuario);
         }
         return this.post(usuario);
     };
+    UsuarioService.prototype.saveSujeito = function (sujeito) {
+        if (sujeito.nuSeqsujeito) {
+            return this.putSujeito(sujeito);
+        }
+        return this.postSujeito(sujeito);
+    };
     //Delete
     UsuarioService.prototype.delete = function (usuario) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var url = this.usuarioUrl + "/" + usuario.cdusuario;
+        var url = this.usuarioUrl + "/" + usuario.cdUsuario;
         return this.http
             .delete(url, { headers: headers })
             .toPromise()
@@ -56,9 +63,25 @@ var UsuarioService = (function () {
     //Edit
     UsuarioService.prototype.put = function (usuario) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var url = this.usuarioUrl + "/" + usuario.cdusuario;
+        var url = this.usuarioUrl + "/" + usuario.cdUsuario;
         return this.http
             .put(url, JSON.stringify(usuario), { headers: headers })
+            .toPromise();
+    };
+    //============= sujeito =================
+    //Add
+    UsuarioService.prototype.postSujeito = function (sujeito) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this.http
+            .post(this.sujeitoUrl, JSON.stringify(sujeito), { headers: headers })
+            .toPromise();
+    };
+    //Edit
+    UsuarioService.prototype.putSujeito = function (sujeito) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var url = this.sujeitoUrl + "/" + sujeito.nuSeqsujeito;
+        return this.http
+            .put(url, JSON.stringify(sujeito), { headers: headers })
             .toPromise();
     };
     UsuarioService.prototype.handleError = function (error) {

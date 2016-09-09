@@ -22,7 +22,7 @@ var DashboardComponent = (function () {
         //.then(usuarios => this.usuarios = usuarios.slice(1, 5));    
     };
     DashboardComponent.prototype.gotoDetail = function (usuario) {
-        var link = ['/detail', usuario.cdusuario];
+        var link = ['/detail', usuario.cdUsuario];
         this.router.navigate(link);
     };
     DashboardComponent = __decorate([

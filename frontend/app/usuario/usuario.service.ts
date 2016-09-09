@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Usuario } from '../classes/usuario';
+import { Sujeito } from '../classes/sujeito';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsuarioService {
     private usuarioUrl = 'http://localhost:3000/api/usuario'; //URL to web api
-    private loginUrl = 'http://localhost:3000/api/usuariologin'; //URL to web api
+    private loginUrl   = 'http://localhost:3000/api/usuariologin'; //URL to web api
+    private sujeitoUrl = 'http://localhost:3000/api/sujeito'; //URL to web api
 
     constructor(
         private http: Http
@@ -31,6 +33,13 @@ export class UsuarioService {
             return this.put(usuario);
         }
         return this.post(usuario);
+    }
+
+    saveSujeito(sujeito: Sujeito): Promise<any> {
+        if(sujeito.nuSeqsujeito) {
+            return this.putSujeito(sujeito);
+        }
+        return this.postSujeito(sujeito);
     }
 
     //Delete
@@ -66,6 +75,26 @@ export class UsuarioService {
                     .toPromise();                    
     }
 
+
+//============= sujeito =================
+    //Add
+    private postSujeito(sujeito: Sujeito) : Promise<any> {
+        let headers = new Headers({'Content-Type':'application/json'});
+
+        return this.http
+                    .post(this.sujeitoUrl, JSON.stringify(sujeito),{headers: headers})
+                    .toPromise();                    
+    }
+
+    //Edit
+    private putSujeito(sujeito: Sujeito) : Promise<any> {
+        let headers = new Headers({'Content-Type':'application/json'});
+        let url = `${this.sujeitoUrl}/${sujeito.nuSeqsujeito}`;
+
+        return this.http
+                    .put(url, JSON.stringify(sujeito), {headers: headers})
+                    .toPromise();                    
+    }
     private handleError(error: any){
         console.error('An error occorred', error);
         return Promise.reject(error.message || error);

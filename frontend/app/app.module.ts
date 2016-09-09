@@ -10,6 +10,7 @@ import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
 
 // Components
+import { UsuarioLoginFormComponent } from './usuario/usuario-login-form.component';
 import { UsuarioCadFormComponent }  from './usuario/usuario-cad-form.component';
 import { UsuarioComponent }         from './usuario/usuario.component';
 import { DashboardComponent }       from './usuario/dashboard.component';
@@ -31,6 +32,7 @@ import { Auth }           from './auth.service';
   ],  
   declarations: [ 
     AppComponent,
+    UsuarioLoginFormComponent,
     UsuarioCadFormComponent,
     UsuarioComponent,
     DashboardComponent,    

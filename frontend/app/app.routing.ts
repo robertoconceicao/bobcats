@@ -2,7 +2,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { UsuarioComponent } from './usuario/usuario.component';
 import { DashboardComponent } from './usuario/dashboard.component';
-import { UsuarioDetailComponent } from './usuario/usuario-detail.component';
 import { UsuarioLoginFormComponent } from './usuario/usuario-login-form.component';
 import { UsuarioCadFormComponent } from './usuario/usuario-cad-form.component';
 import { MensagemComponent } from './mensagem/mensagem.component';
@@ -32,11 +31,7 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
-  },
-  {
-      path: 'detail/:id',
-      component: UsuarioDetailComponent
-  },
+  },  
   {
       path: 'mensagens/:id',
       component: MensagemComponent
