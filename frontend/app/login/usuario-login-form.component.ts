@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Usuario }    from '../classes/usuario';
-import { UsuarioService } from './usuario.service';
+import { LoginService } from './login.service';
 
 import { tokenNotExpired } from 'angular2-jwt';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-form',
-  templateUrl: 'app/usuario/usuario-login-form.component.html'
+  templateUrl: 'app/login/usuario-login-form.component.html'
 })
 
 export class UsuarioLoginFormComponent implements OnInit {
@@ -21,7 +21,7 @@ export class UsuarioLoginFormComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private usuarioService: UsuarioService
+      private loginService: LoginService
       ){}
 
   ngOnInit() {
@@ -34,14 +34,16 @@ export class UsuarioLoginFormComponent implements OnInit {
     this.success = "";
     this.submitted = true;
     this.usuario.flAtivo = 1;
-    this.usuarioService.login(this.usuario)
+    this.loginService.login(this.usuario)
         .then(response => {
            console.log(response.json());           
            if(response.json().Usuarios.length > 0){
               this.success = "Login sucesso ...";  
               this.usuarioLogado = response.json().Usuarios[0] as Usuario;
 
-              localStorage.setItem('id_token', this.geraIdToken(this.usuarioLogado));           
+              localStorage.setItem('id_token', this.geraIdToken(this.usuarioLogado));
+              
+              this.router.navigate(['/principal', this.usuarioLogado.cdUsuario]);           
            } else {
               this.error = "Erro ao efetuar login, usuario/senha inválido";
               this.submitted = false; 

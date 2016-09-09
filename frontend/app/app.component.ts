@@ -1,6 +1,6 @@
 import { Component }                  from '@angular/core';
 import { Auth }                       from './auth.service';
-import { UsuarioLoginFormComponent }  from './usuario/usuario-login-form.component';
+import { LoginService }               from './login/login.service';
 
 import './rxjs-extensions';
 
@@ -12,6 +12,6 @@ import './rxjs-extensions';
 
 export class AppComponent {
   constructor(private auth: Auth,
-    private login: UsuarioLoginFormComponent) {
+    private login: LoginService ) {
   }  
 };

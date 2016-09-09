@@ -10,13 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var usuario_1 = require('../classes/usuario');
-var usuario_service_1 = require('./usuario.service');
+var login_service_1 = require('./login.service');
 var angular2_jwt_1 = require('angular2-jwt');
 var router_1 = require('@angular/router');
 var UsuarioLoginFormComponent = (function () {
-    function UsuarioLoginFormComponent(router, usuarioService) {
+    function UsuarioLoginFormComponent(router, loginService) {
         this.router = router;
-        this.usuarioService = usuarioService;
+        this.loginService = loginService;
     }
     UsuarioLoginFormComponent.prototype.ngOnInit = function () {
         this.usuario = new usuario_1.Usuario();
@@ -28,13 +28,14 @@ var UsuarioLoginFormComponent = (function () {
         this.success = "";
         this.submitted = true;
         this.usuario.flAtivo = 1;
-        this.usuarioService.login(this.usuario)
+        this.loginService.login(this.usuario)
             .then(function (response) {
             console.log(response.json());
             if (response.json().Usuarios.length > 0) {
                 _this.success = "Login sucesso ...";
                 _this.usuarioLogado = response.json().Usuarios[0];
                 localStorage.setItem('id_token', _this.geraIdToken(_this.usuarioLogado));
+                _this.router.navigate(['/principal', _this.usuarioLogado.cdUsuario]);
             }
             else {
                 _this.error = "Erro ao efetuar login, usuario/senha inválido";
@@ -64,9 +65,9 @@ var UsuarioLoginFormComponent = (function () {
     UsuarioLoginFormComponent = __decorate([
         core_1.Component({
             selector: 'login-form',
-            templateUrl: 'app/usuario/usuario-login-form.component.html'
+            templateUrl: 'app/login/usuario-login-form.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router, usuario_service_1.UsuarioService])
+        __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
     ], UsuarioLoginFormComponent);
     return UsuarioLoginFormComponent;
 }());
