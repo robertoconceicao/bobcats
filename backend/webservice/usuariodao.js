@@ -42,9 +42,9 @@ var _findUsuariosByLogin = function(conn, req, resp) {
 };
 
 var _inserirUsuario = function(conn, req, resp) {
-    console.log("_inserirUsuario: cdusuario: "+req.body.cdusuario + " delogin:"+req.body.delogin +" desenha: "+req.body.desenha + " flativo: "+req.body.flativo);
+    console.log("_inserirUsuario: cdusuario: "+req.body.cdUsuario + " delogin:"+req.body.deLogin +" desenha: "+req.body.deSenha + " flativo: "+req.body.flAtivo);
     var query = "insert into esegusuario (deLogin, deSenha, flAtivo) values (?, ?, ?)";
-    var table = [req.body.delogin, md5(req.body.desenha), req.body.flativo];
+    var table = [req.body.deLogin, md5(req.body.deSenha), req.body.flAtivo];
     query = mysql.format(query, table);
     return conn.query(query, function(err, rows) {
         if (err) {
@@ -106,9 +106,9 @@ var _excluirUsuario = function(conn, req, resp) {
 };
 
 var _validaUsuario = function(conn, req, resp) {
-    console.log("validaUsuario - delogin: "+req.body.delogin+" desenha: "+req.body.desenha);
+    console.log("validaUsuario - delogin: "+req.body.deLogin+" desenha: "+req.body.deSenha);
     var query = "select * from esegusuario where delogin = ? and deSenha = ?";
-    var table = [req.body.delogin, md5(req.body.desenha)];
+    var table = [req.body.deLogin, md5(req.body.deSenha)];
     query = mysql.format(query, table);
     return conn.query(query, function(err, rows) {
         if (err) {

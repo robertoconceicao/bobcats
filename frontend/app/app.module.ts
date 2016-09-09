@@ -3,6 +3,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+//import { DatePickerComponent } from 'angular2-simple-datepicker';
 
 //Routers array
 import { AppComponent }         from './app.component';
@@ -12,7 +13,6 @@ import { routing }              from './app.routing';
 import { UsuarioCadFormComponent }  from './usuario/usuario-cad-form.component';
 import { UsuarioComponent }         from './usuario/usuario.component';
 import { DashboardComponent }       from './usuario/dashboard.component';
-import { UsuarioDetailComponent }   from './usuario/usuario-detail.component';
 import { MensagemComponent }        from './mensagem/mensagem.component';
 import { MunicipioComponent }          from './municipio/municipio.component';
 
@@ -33,8 +33,7 @@ import { Auth }           from './auth.service';
     AppComponent,
     UsuarioCadFormComponent,
     UsuarioComponent,
-    DashboardComponent,
-    UsuarioDetailComponent,
+    DashboardComponent,    
     MensagemComponent,
     MunicipioComponent 
   ],  

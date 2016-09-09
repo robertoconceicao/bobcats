@@ -1,6 +1,6 @@
 export class Usuario {
-    public cdusuario: number;
-    public delogin: string;
-    public desenha: string;
-    public flativo: number;
+    public cdUsuario: number;
+    public deLogin: string;
+    public deSenha: string;
+    public flAtivo: number;
 }

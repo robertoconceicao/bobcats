@@ -29,7 +29,7 @@ export class UsuarioCadFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.usuario.flativo = 1;
+    this.usuario.flAtivo = 1;
     this.usuarioService.save(this.usuario)
         .then(success => {
             this.success = "Salvo com sucesso, efetue o login";
@@ -44,8 +44,8 @@ export class UsuarioCadFormComponent implements OnInit {
   }
 
   senhasIguais(){
-    if(!!this.usuario.desenha && !!this.confirmasenha){
-      return this.usuario.desenha === this.confirmasenha;
+    if(!!this.usuario.deSenha && !!this.confirmasenha){
+      return this.usuario.deSenha === this.confirmasenha;
     }
     return true;  
   }

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { DatePickerComponent } from '../../angular2-simple-datepicker';
+
 import { Usuario } from '../classes/usuario';
+import { Sujeito } from '../classes/sujeito';
 import { UsuarioService } from './usuario.service';
 
 import { MunicipioService}   from '../municipio/municipio.service';
@@ -9,33 +12,28 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'usuario-perfil',  
-  templateUrl:'app/usuario/usuario.component.html'
+  templateUrl:'app/usuario/usuario.component.html',
+  directives: [DatePickerComponent]
 })
 
 export class UsuarioComponent implements OnInit {
     
-    public selectedUsuario: Usuario;
-    public usuarios: Usuario[];
+    public sujeito: Sujeito;    
+    submitted: boolean;
     error: any;
+    success: any;
     
     constructor(
       private router: Router,
       private usuarioService: UsuarioService
       ){}
 
-    getUsuarios(){
-     // this.usuarioService.getUsuarios().then(usuarios => this.usuarios = usuarios);
-    }
-
     ngOnInit() {
-      this.getUsuarios();
+        this.sujeito = new Sujeito();
+        this.submitted = false;
     } 
 
-    onSelect(usuario: Usuario) { 
-      this.selectedUsuario = usuario; 
-    }
-
-    gotoDetail(){
-      this.router.navigate(['/detail',this.selectedUsuario.cdusuario]);
+    onSubmit() {
+      this.submitted = false;
     }
 }
