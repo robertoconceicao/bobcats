@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Usuario } from '../classes/usuario';
-import { UsuarioService } from '../usuario/usuario.service';
+import { Usuario } from '../../classes/usuario';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'mensagem',
-  templateUrl: 'app/mensagem/mensagem.component.html',
-  styleUrls: ['app/mensagem/mensagem.component.css']
+  templateUrl: 'app/components/mensagem/mensagem.component.html',
+  styleUrls: ['app/components/mensagem/mensagem.component.css']
 })
 
 export class MensagemComponent implements OnInit { 

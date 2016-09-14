@@ -10,26 +10,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var usuario_service_1 = require('../usuario/usuario.service');
-var MensagemComponent = (function () {
-    function MensagemComponent(router, usuarioService) {
+var usuario_service_1 = require('../../services/usuario.service');
+var DashboardComponent = (function () {
+    function DashboardComponent(router, usuarioService) {
         this.router = router;
         this.usuarioService = usuarioService;
         this.usuarios = [];
     }
-    MensagemComponent.prototype.ngOnInit = function () {
+    DashboardComponent.prototype.ngOnInit = function () {
         // this.usuarioService.getUsuarios()
         //.then(usuarios => this.usuarios = usuarios.slice(1, 5));    
     };
-    MensagemComponent = __decorate([
+    DashboardComponent.prototype.gotoDetail = function (usuario) {
+        var link = ['/detail', usuario.cdUsuario];
+        this.router.navigate(link);
+    };
+    DashboardComponent = __decorate([
         core_1.Component({
-            selector: 'mensagem',
-            templateUrl: 'app/mensagem/mensagem.component.html',
-            styleUrls: ['app/mensagem/mensagem.component.css']
+            selector: 'dashboard',
+            templateUrl: 'app/components/dashboard/dashboard.component.html',
+            styleUrls: ['app/components/dashboard/dashboard.component.css']
         }), 
         __metadata('design:paramtypes', [router_1.Router, usuario_service_1.UsuarioService])
-    ], MensagemComponent);
-    return MensagemComponent;
+    ], DashboardComponent);
+    return DashboardComponent;
 }());
-exports.MensagemComponent = MensagemComponent;
-//# sourceMappingURL=mensagem.component.js.map
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { Municipio } from '../classes/municipio';
-import { MunicipioService } from './municipio.service';
+import { Municipio } from '../../classes/municipio';
+import { MunicipioService } from '../../services/municipio.service';
 
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'localizacao',  
-  templateUrl:'app/municipio/municipio.component.html',
-  styleUrls: ['app/municipio/municipio.component.css']
+  templateUrl:'app/components/municipio/municipio.component.html',
+  styleUrls: ['app/components/municipio/municipio.component.css']
 })
 
 

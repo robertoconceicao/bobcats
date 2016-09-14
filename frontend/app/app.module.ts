@@ -10,18 +10,19 @@ import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
 
 // Components
-import { UsuarioLoginFormComponent } from './login/usuario-login-form.component';
-import { UsuarioCadFormComponent }  from './usuario/usuario-cad-form.component';
-import { UsuarioComponent }         from './usuario/usuario.component';
-import { DashboardComponent }       from './usuario/dashboard.component';
-import { MensagemComponent }        from './mensagem/mensagem.component';
-import { MunicipioComponent }          from './municipio/municipio.component';
+import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
+import { UsuarioCadFormComponent }      from './components/usuario-cad/usuario-cad-form.component';
+import { UsuarioComponent }             from './components/usuario-cad/usuario.component';
+import { DashboardComponent }           from './components/dashboard/dashboard.component';
+import { MensagemComponent }            from './components/mensagem/mensagem.component';
+import { MunicipioComponent }           from './components/municipio/municipio.component';
+import { NavbarComponent }              from './components/navbar/navbar.component';
 
 // Services
-import { UsuarioService}      from './usuario/usuario.service';
-import { LoginService}        from './login/login.service';
-import { MunicipioService}    from './municipio/municipio.service';
-import { Auth }               from './auth.service';
+import { UsuarioService}      from './services/usuario.service';
+import { LoginService}        from './services/login.service';
+import { MunicipioService}    from './services/municipio.service';
+import { Auth }               from './services/auth.service';
 
 @NgModule({
   imports: [ 
@@ -38,7 +39,8 @@ import { Auth }               from './auth.service';
     UsuarioComponent,
     DashboardComponent,    
     MensagemComponent,
-    MunicipioComponent 
+    MunicipioComponent,
+    NavbarComponent 
   ],  
   providers: [
     UsuarioService,
@@ -46,6 +48,6 @@ import { Auth }               from './auth.service';
     MunicipioService,
     Auth
   ],
-  bootstrap:  [ UsuarioLoginFormComponent ]
+  bootstrap:  [ AppComponent ]
 })
 export class AppModule { }

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Usuario }    from '../classes/usuario';
-import { UsuarioService } from './usuario.service';
+import { Usuario }    from '../../classes/usuario';
+import { UsuarioService } from '../../services/usuario.service';
 
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'usuario-cad-form',
-  templateUrl: 'app/usuario/usuario-cad-form.component.html'
+  templateUrl: 'app/components/usuario-cad/usuario-cad-form.component.html'
 })
 
 export class UsuarioCadFormComponent implements OnInit {

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 //import { DatePickerComponent } from '../../angular2-simple-datepicker';
 
-import { Usuario } from '../classes/usuario';
-import { Sujeito } from '../classes/sujeito';
-import { UsuarioService } from './usuario.service';
+import { Usuario } from '../../classes/usuario';
+import { Sujeito } from '../../classes/sujeito';
+import { UsuarioService } from '../../services/usuario.service';
 
-import { MunicipioService}   from '../municipio/municipio.service';
+import { MunicipioService}   from '../../services/municipio.service';
 
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'usuario-perfil',  
-  templateUrl:'app/usuario/usuario.component.html'
+  templateUrl:'app/components/usuario-cad/usuario.component.html'
   //,directives: [DatePickerComponent]
 })
 

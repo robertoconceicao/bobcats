@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var municipio_1 = require('../classes/municipio');
-var municipio_service_1 = require('./municipio.service');
+var municipio_1 = require('../../classes/municipio');
+var municipio_service_1 = require('../../services/municipio.service');
 var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
 var router_1 = require('@angular/router');
@@ -49,8 +49,8 @@ var MunicipioComponent = (function () {
     MunicipioComponent = __decorate([
         core_1.Component({
             selector: 'localizacao',
-            templateUrl: 'app/municipio/municipio.component.html',
-            styleUrls: ['app/municipio/municipio.component.css']
+            templateUrl: 'app/components/municipio/municipio.component.html',
+            styleUrls: ['app/components/municipio/municipio.component.css']
         }), 
         __metadata('design:paramtypes', [router_1.Router, municipio_service_1.MunicipioService])
     ], MunicipioComponent);

@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var sujeito_1 = require('../classes/sujeito');
-var usuario_service_1 = require('./usuario.service');
+var sujeito_1 = require('../../classes/sujeito');
+var usuario_service_1 = require('../../services/usuario.service');
 var router_1 = require('@angular/router');
 var UsuarioComponent = (function () {
     function UsuarioComponent(router, usuarioService) {
@@ -41,7 +41,7 @@ var UsuarioComponent = (function () {
     UsuarioComponent = __decorate([
         core_1.Component({
             selector: 'usuario-perfil',
-            templateUrl: 'app/usuario/usuario.component.html'
+            templateUrl: 'app/components/usuario-cad/usuario.component.html'
         }), 
         __metadata('design:paramtypes', [router_1.Router, usuario_service_1.UsuarioService])
     ], UsuarioComponent);

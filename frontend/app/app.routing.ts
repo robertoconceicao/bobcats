@@ -1,12 +1,13 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule }         from '@angular/router';
 
-import { AppComponent }         from './app.component';
-import { UsuarioComponent } from './usuario/usuario.component';
-import { DashboardComponent } from './usuario/dashboard.component';
-import { UsuarioLoginFormComponent } from './login/usuario-login-form.component';
-import { UsuarioCadFormComponent } from './usuario/usuario-cad-form.component';
-import { MensagemComponent } from './mensagem/mensagem.component';
-import { MunicipioComponent } from './municipio/municipio.component';
+import { AppComponent }                 from './app.component';
+import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
+import { UsuarioCadFormComponent }      from './components/usuario-cad/usuario-cad-form.component';
+import { UsuarioComponent }             from './components/usuario-cad/usuario.component';
+import { DashboardComponent }           from './components/dashboard/dashboard.component';
+import { MensagemComponent }            from './components/mensagem/mensagem.component';
+import { MunicipioComponent }           from './components/municipio/municipio.component';
+import { NavbarComponent }              from './components/navbar/navbar.component';
 
 const appRoutes: Routes = [
   {
@@ -17,10 +18,6 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: UsuarioLoginFormComponent
-  },
-  {
-    path: 'principal/:cdUsuario',
-    component: AppComponent 
   },
   {
     path: 'cad_usuario',
@@ -35,7 +32,7 @@ const appRoutes: Routes = [
     component: UsuarioComponent
   },
   {
-    path: 'dashboard',
+    path: 'dashboard/:cdUsuario',
     component: DashboardComponent
   },  
   {

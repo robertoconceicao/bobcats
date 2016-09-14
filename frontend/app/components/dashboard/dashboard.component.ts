@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Usuario } from '../classes/usuario';
-import { UsuarioService } from './usuario.service';
+import { Usuario } from '../../classes/usuario';
+import { UsuarioService } from '../../services/usuario.service';
 
 
 @Component({
-  selector: 'my-dashboard',
-  templateUrl: 'app/usuario/dashboard.component.html',
-  styleUrls: ['app/usuario/dashboard.component.css']
+  selector: 'dashboard',
+  templateUrl: 'app/components/dashboard/dashboard.component.html',
+  styleUrls: ['app/components/dashboard/dashboard.component.css']
 })
 
 export class DashboardComponent implements OnInit { 
