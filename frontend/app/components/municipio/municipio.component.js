@@ -22,6 +22,7 @@ var MunicipioComponent = (function () {
     }
     MunicipioComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.selectedMunicipio = new municipio_1.Municipio();
         this.municipios = this.searchTerms
             .debounceTime(300) // wait for 300ms pause in events
             .distinctUntilChanged() // ignore if next search term is same as previous
@@ -41,6 +42,7 @@ var MunicipioComponent = (function () {
     MunicipioComponent.prototype.onSelectedMunicipio = function (municipio) {
         console.log("Chamando metodo: onSelectedMunicipio " + municipio);
         this.selectedMunicipio = municipio;
+        this.search("");
     };
     __decorate([
         core_1.Input(), 

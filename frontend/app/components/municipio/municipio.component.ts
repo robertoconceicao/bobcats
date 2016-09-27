@@ -28,6 +28,8 @@ export class MunicipioComponent implements OnInit {
       ){}
 
     ngOnInit(): void {
+        this.selectedMunicipio = new Municipio();
+
         this.municipios = this.searchTerms
         .debounceTime(300)        // wait for 300ms pause in events
         .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -49,5 +51,6 @@ export class MunicipioComponent implements OnInit {
     onSelectedMunicipio(municipio: Municipio){
       console.log("Chamando metodo: onSelectedMunicipio "+ municipio);
       this.selectedMunicipio = municipio;
+      this.search("");
     }
 }

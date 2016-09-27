@@ -1,9 +1,9 @@
 <div id="search-component">
   <div class="form-group">
       <label for="localizacao">Localizacao</label>    
-      <input #searchBox (keyup)="search(searchBox.value)" class="form-control" />  
+      <input [(ngModel)]="selectedMunicipio.nmmunicipio" #searchBox (keyup)="search(searchBox.value)" class="form-control" />  
       <div *ngFor="let municipio of municipios | async" (click)="onSelectedMunicipio(municipio)" class="form-control" >
-          <span>{{municipio.nmMunicipio }}, </span> <span class="negrito"> {{municipio.nmEstado}}</span>
+          <span>{{municipio.nmmunicipio }}, </span> <span class="negrito"> {{municipio.nmestado}}</span>
       </div>
   </div>
 </div>
