@@ -10,4 +10,9 @@ export class Sujeito {
     public flSexo: string;
     public nuTelefone: string;
     public deEmail: string; 
+    
+    constructor(){
+        this.usuario = new Usuario();
+        this.municipio = new Municipio();
+    }
 }

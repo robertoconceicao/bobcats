@@ -15,13 +15,6 @@ var NavbarComponent = (function () {
     function NavbarComponent(loginService) {
         this.loginService = loginService;
     }
-    Object.defineProperty(NavbarComponent.prototype, "authenticated", {
-        get: function () {
-            return this.loginService.authenticated();
-        },
-        enumerable: true,
-        configurable: true
-    });
     NavbarComponent.prototype.doLogin = function () {
         this.loginService.goTelaLogin();
     };
@@ -42,7 +35,7 @@ var NavbarComponent = (function () {
             providers: [],
             pipes: [],
             styleUrls: ['app/components/navbar/navbar.css'],
-            template: "    \n    <nav class=\"navbar navbar-fixed-top navbar-dark bg-success navbar-static-top\">\n            <ul class=\"topnav\" id=\"myTopnav\">\n                <li><a href=\"#\">Meu Perfil</a></li>\n                <li><a href=\"#\">Por perto</a></li>\n                \n                <li><a routerLink=\"/mensagens\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-weixin\">Mensagens</span></a></li>\n                <li><a routerLink=\"/dashboard\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-home\">Dashboard</span></a></li>\n                <li><a routerLink=\"/usuarios\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Usuarios</span></a></li>\n                <li><a routerLink=\"/municipio\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Localizacao</span></a></li>\n                <li><a routerLink=\"/login\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Login</span></a></li>\n                <li><a routerLink=\"/cad_usuario\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Novo Usu\u00E1rio</span></a></li>\n                <li class=\"icon\">\n                <a href=\"javascript:void(0);\" onclick=\"myFunction()\">&#9776;</a>\n                </li>\n            </ul>\n    </nav>\n    <br />\n    "
+            template: "\n        \n    <!-- Fixed navbar -->    \n    <nav class=\"navbar navbar-default navbar-fixed-top\">\n        <div class=\"container\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a class=\"navbar-brand\" routerLink=\"/dashboard\" routerLinkActive=\"active\">BobCats</a>\n            </div>\n\n            <div id=\"navbar\" class=\"navbar-collapse collapse\">\n                <ul class=\"nav navbar-nav\">\n                    <li><a routerLink=\"/mensagens\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-weixin\">Mensagens</span></a></li>\n                    <li><a routerLink=\"/dashboard\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-home\">Dashboard</span></a></li>\n                    <li><a routerLink=\"/usuarios\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Usuarios</span></a></li>\n                    <li><a routerLink=\"/municipio\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Localizacao</span></a></li>\n                    <li><a routerLink=\"/login\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Login</span></a></li>\n                    <li><a routerLink=\"/cad_usuario\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Novo Usu\u00E1rio</span></a></li>\n                </ul>\n\n                <ul class=\"nav navbar-nav navbar-right\">            \n                    <li><a class=\"btn btn-default btn-lg\" role=\"button\" (click)=\"doLogout()\">Logout</a></li>\n                </ul>\n            </div><!--/.nav-collapse -->\n        </div>    \n    </nav>\n    <br />\n    "
         }), 
         __metadata('design:paramtypes', [login_service_1.LoginService])
     ], NavbarComponent);

@@ -46,7 +46,12 @@ import { Auth }               from './services/auth.service';
     UsuarioService,
     LoginService,
     MunicipioService,
-    Auth
+    Auth,
+    { provide: 'CanAlwaysActivateGuard',
+      useValue: () => {
+        return true;
+      }
+    }
   ],
   bootstrap:  [ AppComponent ]
 })

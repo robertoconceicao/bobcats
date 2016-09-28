@@ -1,4 +1,5 @@
 import { Routes, RouterModule }         from '@angular/router';
+import { LoginService }                   from './services/login.service';
 
 import { AppComponent }                 from './app.component';
 import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
@@ -21,27 +22,33 @@ const appRoutes: Routes = [
   },
   {
     path: 'cad_usuario',
-    component: UsuarioCadFormComponent
+    component: UsuarioCadFormComponent,
+    canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
     path: 'usuario/:cdUsuario',
-    component: UsuarioComponent
+    component: UsuarioComponent,
+    canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
     path: 'usuarios',
-    component: UsuarioComponent
+    component: UsuarioComponent,
+    canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
     path: 'dashboard/:cdUsuario',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: ['CanAlwaysActivateGuard', LoginService]
   },  
   {
       path: 'mensagens/:cdUsuario',
-      component: MensagemComponent
+      component: MensagemComponent,
+      canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
       path: 'municipio',
-      component: MunicipioComponent
+      component: MunicipioComponent,
+      canActivate: ['CanAlwaysActivateGuard', LoginService]
   }  
 ];
 

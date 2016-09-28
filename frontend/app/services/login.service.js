@@ -13,6 +13,8 @@ var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
 var angular2_jwt_1 = require('angular2-jwt');
 require('rxjs/add/operator/toPromise');
+//https://jwt.io/introduction/
+//http://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html
 var LoginService = (function () {
     function LoginService(http, router) {
         this.http = http;
@@ -45,7 +47,7 @@ var LoginService = (function () {
         console.error('An error occorred', error);
         return Promise.reject(error.message || error);
     };
-    LoginService.prototype.authenticated = function () {
+    LoginService.prototype.canActivate = function () {
         // Check if there's an unexpired JWT
         // It searches for an item in localStorage with key == 'id_token'
         return angular2_jwt_1.tokenNotExpired();

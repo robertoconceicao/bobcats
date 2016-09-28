@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Usuario } from '../classes/usuario';
-import { Router } from '@angular/router';
+import { Router, CanActivate} from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 
 import 'rxjs/add/operator/toPromise';
 
+//https://jwt.io/introduction/
+//http://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html
+
 @Injectable()
-export class LoginService {    
+export class LoginService implements CanActivate {    
     private loginUrl   = 'http://localhost:3000/api/usuariologin'; //URL to web api
     private usuarioLogado: Usuario;
 
@@ -42,7 +45,7 @@ export class LoginService {
         return Promise.reject(error.message || error);
     }    
 
-    public authenticated() {
+    public canActivate() {
     // Check if there's an unexpired JWT
     // It searches for an item in localStorage with key == 'id_token'
         return tokenNotExpired();
