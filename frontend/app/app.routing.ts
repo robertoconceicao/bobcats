@@ -22,33 +22,33 @@ const appRoutes: Routes = [
   },
   {
     path: 'cad_usuario',
-    component: UsuarioCadFormComponent,
-    canActivate: ['CanAlwaysActivateGuard', LoginService]
+    component: UsuarioCadFormComponent
+    //,canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
     path: 'usuario/:cdUsuario',
-    component: UsuarioComponent,
-    canActivate: ['CanAlwaysActivateGuard', LoginService]
+    component: UsuarioComponent
+    //,canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
     path: 'usuarios',
-    component: UsuarioComponent,
-    canActivate: ['CanAlwaysActivateGuard', LoginService]
+    component: UsuarioComponent
+    //,canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
     path: 'dashboard/:cdUsuario',
-    component: DashboardComponent,
-    canActivate: ['CanAlwaysActivateGuard', LoginService]
+    component: DashboardComponent
+    //,canActivate: ['CanAlwaysActivateGuard', LoginService]
   },  
   {
       path: 'mensagens/:cdUsuario',
-      component: MensagemComponent,
-      canActivate: ['CanAlwaysActivateGuard', LoginService]
+      component: MensagemComponent
+      //, canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {
       path: 'municipio',
-      component: MunicipioComponent,
-      canActivate: ['CanAlwaysActivateGuard', LoginService]
+      component: MunicipioComponent
+      //, canActivate: ['CanAlwaysActivateGuard', LoginService]
   }  
 ];
 

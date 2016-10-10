@@ -15,6 +15,7 @@ export class UsuarioLoginFormComponent implements OnInit {
   submitted: boolean;
   error: any;  
   usuarioLogado: Usuario;
+  cdUsuario: String;
 
   constructor(
       private router: Router,
@@ -36,6 +37,10 @@ export class UsuarioLoginFormComponent implements OnInit {
         if(!response.valueOf()){
           this.error = "Erro ao efetuar login, usuario/senha inválido";
           this.submitted = false;
+        } else {          
+          this.cdUsuario = localStorage.getItem("cdUsuario");
+          console.log("Roteando para dashboard cdUsuario: "+this.cdUsuario);
+          this.router.navigate(['/dashboard', this.cdUsuario]);
         }
     }).catch(error => {
           this.error = "Erro ao efetuar login, usuario/senha inválido";

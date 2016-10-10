@@ -49,7 +49,7 @@ import { Auth }               from './services/auth.service';
     Auth,
     { provide: 'CanAlwaysActivateGuard',
       useValue: () => {
-        return true;
+        return false;
       }
     }
   ],

@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //These first 3 lines will be deprecated by the final release
 var core_1 = require("@angular/core");
+var router_1 = require('@angular/router');
 var login_service_1 = require('../../services/login.service');
 var NavbarComponent = (function () {
-    function NavbarComponent(loginService) {
+    function NavbarComponent(loginService, router) {
         this.loginService = loginService;
+        this.router = router;
     }
     NavbarComponent.prototype.doLogin = function () {
         this.loginService.goTelaLogin();
@@ -28,6 +30,22 @@ var NavbarComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    NavbarComponent.prototype.navega = function (url) {
+        this.router.navigate([url]);
+    };
+    NavbarComponent.prototype.navegaParam = function (url) {
+        this.cdUsuario = localStorage.getItem("cdUsuario");
+        console.log("Roteando para " + url + " cdUsuario: " + this.cdUsuario);
+        this.router.navigate([url, this.cdUsuario]);
+    };
+    Object.defineProperty(NavbarComponent.prototype, "getCdUsuario", {
+        get: function () {
+            this.cdUsuario = localStorage.getItem("cdUsuario");
+            return this.cdUsuario;
+        },
+        enumerable: true,
+        configurable: true
+    });
     NavbarComponent = __decorate([
         core_1.Component({
             selector: 'navbar',
@@ -35,9 +53,9 @@ var NavbarComponent = (function () {
             providers: [],
             pipes: [],
             styleUrls: ['app/components/navbar/navbar.css'],
-            template: "\n        \n    <!-- Fixed navbar -->    \n    <nav class=\"navbar navbar-default navbar-fixed-top\">\n        <div class=\"container\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a class=\"navbar-brand\" routerLink=\"/dashboard\" routerLinkActive=\"active\">BobCats</a>\n            </div>\n\n            <div id=\"navbar\" class=\"navbar-collapse collapse\">\n                <ul class=\"nav navbar-nav\">\n                    <li><a routerLink=\"/mensagens\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-weixin\">Mensagens</span></a></li>\n                    <li><a routerLink=\"/dashboard\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-home\">Dashboard</span></a></li>\n                    <li><a routerLink=\"/usuarios\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Usuarios</span></a></li>\n                    <li><a routerLink=\"/municipio\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Localizacao</span></a></li>\n                    <li><a routerLink=\"/login\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Login</span></a></li>\n                    <li><a routerLink=\"/cad_usuario\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Novo Usu\u00E1rio</span></a></li>\n                </ul>\n\n                <ul class=\"nav navbar-nav navbar-right\">            \n                    <li><a class=\"btn btn-default btn-lg\" role=\"button\" (click)=\"doLogout()\">Logout</a></li>\n                </ul>\n            </div><!--/.nav-collapse -->\n        </div>    \n    </nav>\n    <br />\n    "
+            template: "\n        \n    <!-- Fixed navbar -->    \n    <nav class=\"navbar navbar-default navbar-fixed-top\">\n        <div class=\"container\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a class=\"navbar-brand\" (click)=\"navegaParam('/dashboard')\" routerLinkActive=\"active\">BobCats</a>\n            </div>\n\n            <div id=\"navbar\" class=\"navbar-collapse collapse\">\n                <ul class=\"nav navbar-nav\">\n                    <li><a (click)=\"navegaParam('/mensagens')\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-weixin\">Mensagens</span></a></li>\n                    <li><a (click)=\"navegaParam('/dashboard')\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-home\">Dashboard</span></a></li>\n                    <li><a (click)=\"navega('/usuarios')\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Usuarios</span></a></li>\n                    <li><a (click)=\"navega('/municipio')\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Localizacao</span></a></li>\n                    <li><a (click)=\"navega('/login')\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Login</span></a></li>\n                    <li><a (click)=\"navega('/cad_usuario')\" routerLinkActive=\"active\" class=\"skel-layers-ignoreHref\"><span class=\"icon fa-user\">Novo Usu\u00E1rio</span></a></li>\n                </ul>\n\n                <ul class=\"nav navbar-nav navbar-right\">            \n                    <li><a class=\"btn btn-default btn-lg\" role=\"button\" (click)=\"doLogout()\">Logout</a></li>\n                </ul>\n            </div><!--/.nav-collapse -->\n        </div>    \n    </nav>\n    <br />\n    <br />\n    <div class=\"container\">\n        <router-outlet></router-outlet>\n    </div>\n    "
         }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService])
+        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
     ], NavbarComponent);
     return NavbarComponent;
 }());

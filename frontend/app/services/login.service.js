@@ -32,7 +32,8 @@ var LoginService = (function () {
             if (response.json().Usuarios.length > 0) {
                 _this.usuarioLogado = response.json().Usuarios[0];
                 localStorage.setItem('id_token', _this.geraIdToken(_this.usuarioLogado));
-                _this.router.navigate(['/dashboard', _this.usuarioLogado.cdUsuario]);
+                localStorage.setItem('cdUsuario', "" + _this.usuarioLogado.cdUsuario);
+                //   this.router.navigate(['/dashboard', this.usuarioLogado.cdUsuario]);
                 return true;
             }
             else {
@@ -50,6 +51,7 @@ var LoginService = (function () {
     LoginService.prototype.canActivate = function () {
         // Check if there's an unexpired JWT
         // It searches for an item in localStorage with key == 'id_token'
+        console.log("chamando método canActivate ....");
         return angular2_jwt_1.tokenNotExpired();
     };
     ;

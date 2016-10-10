@@ -13,11 +13,7 @@ import './rxjs-extensions';
 @Component({
     selector: 'my-app',
     template: `    
-      <navbar></navbar>
-      <br />
-      <div class="container">
-          <router-outlet></router-outlet>
-      </div>
+      <navbar></navbar>      
       `
     })
 

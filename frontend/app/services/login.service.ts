@@ -28,8 +28,10 @@ export class LoginService implements CanActivate {
                 console.log(response.json());           
                 if(response.json().Usuarios.length > 0){                      
                     this.usuarioLogado = response.json().Usuarios[0] as Usuario;
-                    localStorage.setItem('id_token', this.geraIdToken(this.usuarioLogado));                    
-                    this.router.navigate(['/dashboard', this.usuarioLogado.cdUsuario]);
+                    localStorage.setItem('id_token', this.geraIdToken(this.usuarioLogado));
+                    localStorage.setItem('cdUsuario', ""+this.usuarioLogado.cdUsuario);
+
+                 //   this.router.navigate(['/dashboard', this.usuarioLogado.cdUsuario]);
                     return true;           
                 } else {
                     return false;
@@ -48,6 +50,7 @@ export class LoginService implements CanActivate {
     public canActivate() {
     // Check if there's an unexpired JWT
     // It searches for an item in localStorage with key == 'id_token'
+        console.log("chamando método canActivate ....");
         return tokenNotExpired();
     };
 

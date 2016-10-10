@@ -33,6 +33,11 @@ var UsuarioLoginFormComponent = (function () {
                 _this.error = "Erro ao efetuar login, usuario/senha inválido";
                 _this.submitted = false;
             }
+            else {
+                _this.cdUsuario = localStorage.getItem("cdUsuario");
+                console.log("Roteando para dashboard cdUsuario: " + _this.cdUsuario);
+                _this.router.navigate(['/dashboard', _this.cdUsuario]);
+            }
         }).catch(function (error) {
             _this.error = "Erro ao efetuar login, usuario/senha inválido";
             _this.submitted = false;

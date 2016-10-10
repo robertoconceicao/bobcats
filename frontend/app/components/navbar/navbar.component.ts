@@ -1,5 +1,6 @@
 //These first 3 lines will be deprecated by the final release
 import {Component} from "@angular/core";
+import { Router }  from '@angular/router';
 
 import {LoginService} from '../../services/login.service';
 
@@ -21,17 +22,17 @@ import {LoginService} from '../../services/login.service';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active">BobCats</a>
+                <a class="navbar-brand" (click)="navegaParam('/dashboard')" routerLinkActive="active">BobCats</a>
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a routerLink="/mensagens" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-weixin">Mensagens</span></a></li>
-                    <li><a routerLink="/dashboard" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-home">Dashboard</span></a></li>
-                    <li><a routerLink="/usuarios" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Usuarios</span></a></li>
-                    <li><a routerLink="/municipio" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Localizacao</span></a></li>
-                    <li><a routerLink="/login" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Login</span></a></li>
-                    <li><a routerLink="/cad_usuario" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Novo Usuário</span></a></li>
+                    <li><a (click)="navegaParam('/mensagens')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-weixin">Mensagens</span></a></li>
+                    <li><a (click)="navegaParam('/dashboard')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-home">Dashboard</span></a></li>
+                    <li><a (click)="navega('/usuarios')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Usuarios</span></a></li>
+                    <li><a (click)="navega('/municipio')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Localizacao</span></a></li>
+                    <li><a (click)="navega('/login')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Login</span></a></li>
+                    <li><a (click)="navega('/cad_usuario')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Novo Usuário</span></a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">            
@@ -41,12 +42,18 @@ import {LoginService} from '../../services/login.service';
         </div>    
     </nav>
     <br />
+    <br />
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
     `
 })
 
 export class NavbarComponent {
 
-    constructor(private loginService: LoginService) {
+    cdUsuario: String;
+
+    constructor(private loginService: LoginService, private router: Router) {
     } 
 
     doLogin() {
@@ -59,5 +66,19 @@ export class NavbarComponent {
 
     get userName() {
         return this.loginService.getUsuarioLogado().deLogin;
+    }
+
+    navega(url){        
+        this.router.navigate([url]);
+    }
+
+    navegaParam(url){
+        this.cdUsuario = localStorage.getItem("cdUsuario");
+        console.log("Roteando para "+url+" cdUsuario: "+this.cdUsuario);
+        this.router.navigate([url, this.cdUsuario]);
+    }
+    get getCdUsuario(){
+        this.cdUsuario = localStorage.getItem("cdUsuario");
+        return this.cdUsuario;
     }
 }
