@@ -15,4 +15,8 @@ export class Sujeito {
         this.usuario = new Usuario();
         this.municipio = new Municipio();
     }
+
+    get toString(){
+        return "nuSeqsujeito: "+this.nuSeqsujeito+" usuario: "+this.usuario.deLogin+" municipio: "+this.municipio.nmmunicipio;        
+    }
 }

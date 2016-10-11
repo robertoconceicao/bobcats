@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 
 import { Usuario } from '../../classes/usuario';
 import { Sujeito } from '../../classes/sujeito';
+import { Municipio } from '../../classes/municipio';
 import { UsuarioService } from '../../services/usuario.service';
 
 import { MunicipioService}   from '../../services/municipio.service';
@@ -18,7 +19,8 @@ import { Router } from '@angular/router';
 
 export class UsuarioComponent implements OnInit {
     
-    public sujeito: Sujeito;    
+    public sujeito: Sujeito;
+    //public selectedMunicipio: Municipio;    
     submitted: boolean;
     error: any;
     success: any;
@@ -35,6 +37,8 @@ export class UsuarioComponent implements OnInit {
 
     onSubmit() {
       this.submitted = false;
+      console.log(this.sujeito.toString);
+
       this.usuarioService.saveSujeito(this.sujeito)
           .then(response => {
             console.log(response.json());           
