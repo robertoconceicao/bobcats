@@ -1,11 +1,14 @@
 "use strict";
-var usuario_1 = require('./usuario');
-var municipio_1 = require('./municipio');
 var Sujeito = (function () {
     function Sujeito() {
-        this.usuario = new usuario_1.Usuario();
-        this.municipio = new municipio_1.Municipio();
     }
+    Object.defineProperty(Sujeito.prototype, "toString", {
+        get: function () {
+            return "nuSeqsujeito: " + this.nuSeqsujeito + " usuario: " + this.cdUsuario + " municipio: " + this.nmMunicipio + " flSexo: " + this.flSexo;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Sujeito;
 }());
 exports.Sujeito = Sujeito;

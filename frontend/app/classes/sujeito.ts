@@ -1,22 +1,15 @@
-import { Usuario } from './usuario';
-import { Municipio } from './municipio';
-
 export class Sujeito {
     public nuSeqsujeito: number;
-    public usuario: Usuario;
-    public municipio: Municipio;
+    public cdUsuario: number;
+    public cdMunicipio: number;
+    public nmMunicipio: string;
     public nmSujeito: string;
     public dtNascimento: any;
     public flSexo: string;
     public nuTelefone: string;
     public deEmail: string; 
     
-    constructor(){
-        this.usuario = new Usuario();
-        this.municipio = new Municipio();
-    }
-
     get toString(){
-        return "nuSeqsujeito: "+this.nuSeqsujeito+" usuario: "+this.usuario.deLogin+" municipio: "+this.municipio.nmmunicipio;        
+        return "nuSeqsujeito: "+this.nuSeqsujeito+" usuario: "+this.cdUsuario+" municipio: "+this.nmMunicipio+" flSexo: "+this.flSexo;        
     }
 }

@@ -18,6 +18,7 @@ var MunicipioComponent = (function () {
     function MunicipioComponent(router, municipioService) {
         this.router = router;
         this.municipioService = municipioService;
+        this.notify = new core_1.EventEmitter();
         this.searchTerms = new Subject_1.Subject();
     }
     MunicipioComponent.prototype.ngOnInit = function () {
@@ -43,11 +44,16 @@ var MunicipioComponent = (function () {
         console.log("Chamando metodo: onSelectedMunicipio " + municipio);
         this.selectedMunicipio = municipio;
         this.search("");
+        this.notify.emit(this.selectedMunicipio);
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', municipio_1.Municipio)
     ], MunicipioComponent.prototype, "selectedMunicipio", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], MunicipioComponent.prototype, "notify", void 0);
     MunicipioComponent = __decorate([
         core_1.Component({
             selector: 'localizacao',

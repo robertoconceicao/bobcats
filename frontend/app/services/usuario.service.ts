@@ -80,7 +80,7 @@ export class UsuarioService {
     //Add
     private postSujeito(sujeito: Sujeito) : Promise<any> {
         let headers = new Headers({'Content-Type':'application/json'});
-
+        console.log("JSON.stringify(sujeito): "+JSON.stringify(sujeito));
         return this.http
                     .post(this.sujeitoUrl, JSON.stringify(sujeito),{headers: headers})
                     .toPromise();                    

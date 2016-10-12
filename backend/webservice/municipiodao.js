@@ -2,7 +2,7 @@ var mysql = require("mysql");
 var md5 = require('MD5');
 
 var _findAllMunicipios = function(conn, req, resp) {
-    var query = "Select m.cdmunicipio, m.nmmunicipio, e.nmestado " +
+    var query = "Select m.cdMunicipio, m.nmMunicipio, e.nmEstado " +
                 "from epadmunicipio m " +
                 "join epadestado e on e.cdestado = m.cdestado " +
                 "order by m.nmmunicipio, e.nmestado";
@@ -25,7 +25,7 @@ var _findAllMunicipios = function(conn, req, resp) {
 };
 
 var _findAllMunicipiosByNome = function(conn, req, resp) {
-    var query = "Select m.cdmunicipio, m.nmmunicipio, e.nmestado " +
+    var query = "Select m.cdMunicipio, m.nmMunicipio, e.nmEstado " +
                 "from epadmunicipio m " +
                 "join epadestado e on e.cdestado = m.cdestado " +
                 "where upper(m.nmmunicipio) like upper( ? ) " +

@@ -5,11 +5,7 @@
         <input type="file" id="foto">
         <p class="help-block">Add fotos.</p>
     </div>
-    <hr />    
-  
-  <input type="hidden" class="form-control" id="cdUsuario"
-      [(ngModel)]="sujeito.usuario.cdUsuario" #cdUsuario="ngModel" >
-
+    <hr />
 
   <div class="form-group">
     <label for="nome">Nome</label>
@@ -31,11 +27,12 @@
 
   <div class="form-group">
     <label for="dtNascimento">Data de Nascimento</label>
-    TODO
+    <my-date-picker [options]="myDatePickerOptions"
+               (dateChanged)="onDateChanged($event)"></my-date-picker>
   </div>
   
   <div class="form-group">
-    <select [(ngModel)]="sujeito.flSexo" class="form-control">
+    <select [(ngModel)]="sujeito.flSexo" class="form-control" name="flSexo">
       <option [value]="F">Fêminino</option>
       <option [value]="M">Masculino</option>    
     </select>
@@ -48,7 +45,7 @@
   </div>    
   
   <div class="form-group">    
-    <localizacao [selectedMunicipio]="sujeito.municipio"></localizacao>
+    <localizacao (notify)='onNotifyMunicipio($event)'></localizacao>
   </div>
   
   <button type="submit" class="btn btn-success" [disabled]="submitted">Salvar Informações</button>

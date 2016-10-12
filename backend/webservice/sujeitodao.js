@@ -68,6 +68,7 @@ var _inserirSujeito = function(conn, req, resp) {
     var table = [req.body.cdUsuario, req.body.cdMunicipio, req.body.nmSujeito,
                  req.body.dtNascimento, req.body.flSexo, req.body.nuTelefone,
                  req.body.deEmail];
+    console.log("inserirSujeito: "+table);                 
     query = mysql.format(query, table);
     return conn.query(query, function(err, rows) {
         if (err) {
@@ -75,12 +76,14 @@ var _inserirSujeito = function(conn, req, resp) {
                 "Error": true,
                 "Message": "Erro ao inserir o sujeito: " + err
             });
+            console.log("Erro ao inserir o sujeito: "+ err);
         } else {
             resp.json({
                 "Error": false,
                 "Message": "Success",
                 "Sujeito": rows
             });
+            console.log("Success inserir o sujeito ");
         }
     });
 };

@@ -9,6 +9,9 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
 
+//Modulo calendario
+import { MyDatePickerModule }   from 'mydatepicker';
+
 // Components
 import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
 import { UsuarioCadFormComponent }      from './components/usuario-cad/usuario-cad-form.component';
@@ -30,7 +33,8 @@ import { Auth }               from './services/auth.service';
     FormsModule,
     HttpModule,
     JsonpModule,
-    routing 
+    routing,
+    MyDatePickerModule 
   ],  
   declarations: [ 
     AppComponent,

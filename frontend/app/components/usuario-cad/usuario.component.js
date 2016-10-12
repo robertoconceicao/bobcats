@@ -10,20 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var sujeito_1 = require('../../classes/sujeito');
+var municipio_1 = require('../../classes/municipio');
 var usuario_service_1 = require('../../services/usuario.service');
+var municipio_component_1 = require('../municipio/municipio.component');
 var router_1 = require('@angular/router');
 var UsuarioComponent = (function () {
     function UsuarioComponent(router, usuarioService) {
         this.router = router;
         this.usuarioService = usuarioService;
+        this.myDatePickerOptions = {
+            todayBtnTxt: 'Today',
+            dateFormat: 'yyyy-mm-dd',
+            firstDayOfWeek: 'mo',
+            sunHighlight: true,
+            height: '34px',
+            width: '260px',
+            inline: false,
+            disableUntil: { year: 2016, month: 8, day: 10 },
+            selectionTxtFontSize: '16px'
+        };
     }
     UsuarioComponent.prototype.ngOnInit = function () {
         this.sujeito = new sujeito_1.Sujeito();
+        this.selectedMunicipio = new municipio_1.Municipio();
         this.submitted = false;
     };
     UsuarioComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submitted = false;
+        this.sujeito.cdUsuario = localStorage.getItem("cdUsuario");
+        this.sujeito.cdMunicipio = this.selectedMunicipio.cdMunicipio;
+        this.sujeito.nmMunicipio = this.selectedMunicipio.nmMunicipio;
+        console.log(this.sujeito.toString);
         this.usuarioService.saveSujeito(this.sujeito)
             .then(function (response) {
             console.log(response.json());
@@ -38,10 +56,18 @@ var UsuarioComponent = (function () {
             _this.error = "Erro ao salvar os dados";
         });
     };
+    UsuarioComponent.prototype.onNotifyMunicipio = function (municipio) {
+        console.log("municipio: " + municipio.cdMunicipio + "; " + municipio.nmMunicipio + "; " + municipio.nmEstado);
+        this.selectedMunicipio = municipio;
+    };
+    UsuarioComponent.prototype.onDateChanged = function (event) {
+        console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    };
     UsuarioComponent = __decorate([
         core_1.Component({
             selector: 'usuario-perfil',
-            templateUrl: 'app/components/usuario-cad/usuario.component.html'
+            templateUrl: 'app/components/usuario-cad/usuario.component.html',
+            directives: [municipio_component_1.MunicipioComponent]
         }), 
         __metadata('design:paramtypes', [router_1.Router, usuario_service_1.UsuarioService])
     ], UsuarioComponent);

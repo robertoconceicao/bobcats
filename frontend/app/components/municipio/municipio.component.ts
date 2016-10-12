@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Municipio } from '../../classes/municipio';
 import { MunicipioService } from '../../services/municipio.service';
 
@@ -18,6 +18,7 @@ export class MunicipioComponent implements OnInit {
     
     @Input() selectedMunicipio: Municipio;    
     municipios: Observable<Municipio[]>;
+    @Output() notify: EventEmitter<Municipio> = new EventEmitter<Municipio>();
 
     private searchTerms = new Subject<string>();
     error: any;
@@ -52,5 +53,7 @@ export class MunicipioComponent implements OnInit {
       console.log("Chamando metodo: onSelectedMunicipio "+ municipio);
       this.selectedMunicipio = municipio;
       this.search("");
+      
+      this.notify.emit(this.selectedMunicipio);
     }
 }

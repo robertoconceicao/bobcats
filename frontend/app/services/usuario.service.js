@@ -72,6 +72,7 @@ var UsuarioService = (function () {
     //Add
     UsuarioService.prototype.postSujeito = function (sujeito) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        console.log("JSON.stringify(sujeito): " + JSON.stringify(sujeito));
         return this.http
             .post(this.sujeitoUrl, JSON.stringify(sujeito), { headers: headers })
             .toPromise();
