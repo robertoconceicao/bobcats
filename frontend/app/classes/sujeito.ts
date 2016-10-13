@@ -1,10 +1,10 @@
 export class Sujeito {
     public nuSeqsujeito: number;
-    public cdUsuario: number;
-    public cdMunicipio: number;
+    public cdUsuario: string;
+    public cdMunicipio: string;
     public nmMunicipio: string;
     public nmSujeito: string;
-    public dtNascimento: any;
+    public dtNascimento: Date;
     public flSexo: string;
     public nuTelefone: string;
     public deEmail: string; 

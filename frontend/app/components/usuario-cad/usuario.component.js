@@ -18,17 +18,6 @@ var UsuarioComponent = (function () {
     function UsuarioComponent(router, usuarioService) {
         this.router = router;
         this.usuarioService = usuarioService;
-        this.myDatePickerOptions = {
-            todayBtnTxt: 'Today',
-            dateFormat: 'yyyy-mm-dd',
-            firstDayOfWeek: 'mo',
-            sunHighlight: true,
-            height: '34px',
-            width: '260px',
-            inline: false,
-            disableUntil: { year: 2016, month: 8, day: 10 },
-            selectionTxtFontSize: '16px'
-        };
     }
     UsuarioComponent.prototype.ngOnInit = function () {
         this.sujeito = new sujeito_1.Sujeito();

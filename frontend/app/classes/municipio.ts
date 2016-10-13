@@ -1,5 +1,5 @@
 export class Municipio {
-  cdMunicipio: number; 
+  cdMunicipio: string; 
   nmMunicipio: string;
   nmEstado: string;
 }

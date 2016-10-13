@@ -10,7 +10,6 @@ import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
 
 //Modulo calendario
-import { MyDatePickerModule }   from 'mydatepicker';
 
 // Components
 import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
@@ -33,8 +32,7 @@ import { Auth }               from './services/auth.service';
     FormsModule,
     HttpModule,
     JsonpModule,
-    routing,
-    MyDatePickerModule 
+    routing 
   ],  
   declarations: [ 
     AppComponent,
@@ -44,7 +42,7 @@ import { Auth }               from './services/auth.service';
     DashboardComponent,    
     MensagemComponent,
     MunicipioComponent,
-    NavbarComponent 
+    NavbarComponent    
   ],  
   providers: [
     UsuarioService,
