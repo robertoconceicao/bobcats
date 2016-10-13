@@ -15,7 +15,6 @@ var DashboardComponent = (function () {
     function DashboardComponent(router, usuarioService) {
         this.router = router;
         this.usuarioService = usuarioService;
-        this.usuarios = [];
     }
     DashboardComponent.prototype.ngOnInit = function () {
         // this.usuarioService.getUsuarios()

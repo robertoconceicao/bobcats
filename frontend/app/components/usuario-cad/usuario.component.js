@@ -18,9 +18,11 @@ var UsuarioComponent = (function () {
     function UsuarioComponent(router, usuarioService) {
         this.router = router;
         this.usuarioService = usuarioService;
+        this.generos = [{ value: 'F', name: 'Fêminino' }, { value: 'M', name: 'Masculino' }];
     }
     UsuarioComponent.prototype.ngOnInit = function () {
         this.sujeito = new sujeito_1.Sujeito();
+        this.sujeito.flSexo = 'F';
         this.selectedMunicipio = new municipio_1.Municipio();
         this.submitted = false;
     };
@@ -34,7 +36,7 @@ var UsuarioComponent = (function () {
         this.usuarioService.saveSujeito(this.sujeito)
             .then(function (response) {
             console.log(response.json());
-            if (response.json().Sujeito.length > 0) {
+            if (response.json().Message == "Success") {
                 _this.success = "Dados cadastrado com sucesso ...";
             }
             else {

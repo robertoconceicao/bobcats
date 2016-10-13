@@ -12,7 +12,7 @@
     <input type="text" class="form-control" id="nome" placeholder="Nome"
       required [(ngModel)]="sujeito.nmSujeito" name="nmSujeito" #nmSujeito="ngModel">
   </div>
-  <div [hidden]="nmSujeito.valid " class="alert alert-danger">
+  <div [hidden]="nmSujeito.valid || nmSujeito.pristine " class="alert alert-danger">
       O Campo Nome é obrigatório
   </div>
 
@@ -21,7 +21,7 @@
     <input type="email" class="form-control" id="email" placeholder="Email"
       required [(ngModel)]="sujeito.deEmail" name="email" #email="ngModel">
   </div>
-  <div [hidden]="email.valid " class="alert alert-danger">
+  <div [hidden]="email.valid || email.pristine " class="alert alert-danger">
       O Campo Email é obrigatório
   </div>
 
@@ -31,10 +31,10 @@
   </div>
   
   <div class="form-group">
-    <select [(ngModel)]="sujeito.flSexo" class="form-control" name="flSexo" #flSexo="ngModel">
-      <option [value]="F">Fêminino</option>
-      <option [value]="M">Masculino</option>    
-    </select>
+    <label>Gênero</label>
+    <div *ngFor="let genero of generos">        
+        <input type="radio" name="flSexo" [(ngModel)]="sujeito.flSexo" [value]="genero.value">{{genero.name}}        
+    </div>    
   </div>
 
   <div class="form-group">

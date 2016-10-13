@@ -25,6 +25,7 @@ export class UsuarioComponent implements OnInit {
     submitted: boolean;
     error: any;
     success: any;
+    public generos = [{value: 'F', name: 'Fêminino'}, {value: 'M', name: 'Masculino'}];    
     
     constructor(
       private router: Router,
@@ -33,6 +34,7 @@ export class UsuarioComponent implements OnInit {
 
     ngOnInit() {
         this.sujeito = new Sujeito();
+        this.sujeito.flSexo = 'F';
         this.selectedMunicipio = new Municipio();
         this.submitted = false;        
     } 
@@ -48,7 +50,7 @@ export class UsuarioComponent implements OnInit {
       this.usuarioService.saveSujeito(this.sujeito)
           .then(response => {
             console.log(response.json());           
-            if(response.json().Sujeito.length > 0){
+            if(response.json().Message == "Success"){
                 this.success = "Dados cadastrado com sucesso ...";
             } else {
                 this.error = "Erro ao salvar os dados"; 

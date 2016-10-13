@@ -5,6 +5,7 @@ import { AppComponent }                 from './app.component';
 import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
 import { UsuarioCadFormComponent }      from './components/usuario-cad/usuario-cad-form.component';
 import { UsuarioComponent }             from './components/usuario-cad/usuario.component';
+import { ListaUsuariosComponent }       from './components/usuario-cad/lista-usuarios.component';
 import { DashboardComponent }           from './components/dashboard/dashboard.component';
 import { MensagemComponent }            from './components/mensagem/mensagem.component';
 import { MunicipioComponent }           from './components/municipio/municipio.component';
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'usuarios',
-    component: UsuarioComponent
+    component: ListaUsuariosComponent
     //,canActivate: ['CanAlwaysActivateGuard', LoginService]
   },
   {

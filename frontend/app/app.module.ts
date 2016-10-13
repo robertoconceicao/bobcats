@@ -14,6 +14,7 @@ import { routing }              from './app.routing';
 // Components
 import { UsuarioLoginFormComponent }    from './components/login/usuario-login-form.component';
 import { UsuarioCadFormComponent }      from './components/usuario-cad/usuario-cad-form.component';
+import { ListaUsuariosComponent }      from './components/usuario-cad/lista-usuarios.component';
 import { UsuarioComponent }             from './components/usuario-cad/usuario.component';
 import { DashboardComponent }           from './components/dashboard/dashboard.component';
 import { MensagemComponent }            from './components/mensagem/mensagem.component';
@@ -42,7 +43,8 @@ import { Auth }               from './services/auth.service';
     DashboardComponent,    
     MensagemComponent,
     MunicipioComponent,
-    NavbarComponent    
+    NavbarComponent,
+    ListaUsuariosComponent    
   ],  
   providers: [
     UsuarioService,

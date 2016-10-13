@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Usuario } from '../../classes/usuario';
+import { Sujeito } from '../../classes/sujeito';
 import { UsuarioService } from '../../services/usuario.service';
 
 
@@ -13,7 +14,8 @@ import { UsuarioService } from '../../services/usuario.service';
 
 export class DashboardComponent implements OnInit { 
 
-    usuarios: Usuario[] = [];
+    public usuario: Usuario;
+    public sujeito: Sujeito;
     constructor(
         private router: Router,
         private usuarioService: UsuarioService){}
