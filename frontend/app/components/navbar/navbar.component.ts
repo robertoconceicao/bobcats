@@ -10,22 +10,23 @@ import {LoginService} from '../../services/login.service';
     providers: [],
     pipes: [],
     styleUrls: ['app/components/navbar/navbar.css'],
-    template: `
-        
+    template: `   
     <!-- Fixed navbar -->    
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+               
                 <a class="navbar-brand" (click)="navegaParam('/dashboard')" routerLinkActive="active">BobCats</a>
             </div>
 
-            <div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a (click)="navegaParam('/mensagens')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-weixin">Mensagens</span></a></li>
                     <li><a (click)="navegaParam('/dashboard')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-home">Dashboard</span></a></li>

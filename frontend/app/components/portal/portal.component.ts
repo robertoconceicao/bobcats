@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component }  from '@angular/core';
 import { Usuario }    from '../../classes/usuario';
 import { LoginService } from '../../services/login.service';
 
@@ -6,11 +6,11 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login-form',
-  templateUrl: 'app/components/login/usuario-login-form.component.html'
+  selector: 'portal',
+  templateUrl: 'app/components/portal/portal.component.html'
 })
 
-export class UsuarioLoginFormComponent implements OnInit {
+export class PortalComponent implements OnInit {
   usuario: Usuario;  
   submitted: boolean;
   error: any;  
@@ -37,6 +37,7 @@ export class UsuarioLoginFormComponent implements OnInit {
         if(!response.valueOf()){
           this.error = "Erro ao efetuar login, usuario/senha inválido";
           this.submitted = false;
+          this.router.navigate(['/login']);
         } else {          
           this.cdUsuario = localStorage.getItem("cdUsuario");
           console.log("Roteando para dashboard cdUsuario: "+this.cdUsuario);
@@ -45,6 +46,7 @@ export class UsuarioLoginFormComponent implements OnInit {
     }).catch(error => {
           this.error = "Erro ao efetuar login, usuario/senha inválido";
           this.submitted = false;
+          this.router.navigate(['/login']);
     });
   }
 }

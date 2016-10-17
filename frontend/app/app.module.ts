@@ -3,7 +3,6 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-//import { DatePickerComponent } from 'angular2-simple-datepicker';
 
 //Routers array
 import { AppComponent }         from './app.component';
@@ -20,6 +19,7 @@ import { DashboardComponent }           from './components/dashboard/dashboard.c
 import { MensagemComponent }            from './components/mensagem/mensagem.component';
 import { MunicipioComponent }           from './components/municipio/municipio.component';
 import { NavbarComponent }              from './components/navbar/navbar.component';
+import { PortalComponent }              from './components/portal/portal.component';
 
 // Services
 import { UsuarioService}      from './services/usuario.service';
@@ -44,7 +44,8 @@ import { Auth }               from './services/auth.service';
     MensagemComponent,
     MunicipioComponent,
     NavbarComponent,
-    ListaUsuariosComponent    
+    ListaUsuariosComponent,
+    PortalComponent    
   ],  
   providers: [
     UsuarioService,

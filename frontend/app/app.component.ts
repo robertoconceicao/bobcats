@@ -12,8 +12,17 @@ import './rxjs-extensions';
 
 @Component({
     selector: 'my-app',
-    template: `    
-      <navbar></navbar>      
+    template: `
+        <div *ngIf="authenticated">
+            <navbar></navbar>      
+        </div>
+        <div *ngIf="!authenticated">
+            <portal></portal>      
+        </div>
+
+        <div class="container">    
+            <router-outlet></router-outlet>
+        </div>
       `
     })
 
@@ -22,6 +31,6 @@ export class AppComponent {
     }
 
     get authenticated() {
-        return this.loginService.canActivate();
+        return localStorage.getItem("cdUsuario") != null;
     }    
 };

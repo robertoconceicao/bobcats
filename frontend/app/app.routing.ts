@@ -10,12 +10,17 @@ import { DashboardComponent }           from './components/dashboard/dashboard.c
 import { MensagemComponent }            from './components/mensagem/mensagem.component';
 import { MunicipioComponent }           from './components/municipio/municipio.component';
 import { NavbarComponent }              from './components/navbar/navbar.component';
+import { PortalComponent }              from './components/portal/portal.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/portal',
     pathMatch: 'full'
+  },
+  {
+    path: 'portal',
+    component: PortalComponent
   },
   {
     path: 'login',

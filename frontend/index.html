@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<!-- Latest compiled and minified CSS -->
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
 		
@@ -20,26 +20,17 @@
 		<!-- <link rel="stylesheet" href="styles.css"> -->
 
 		<!-- 1. Load libraries -->
-		 <!-- Polyfill(s) for older browsers -->
+		<!-- Polyfill(s) for older browsers -->
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 		<script src="node_modules/core-js/client/shim.min.js"></script>
 		<script src="node_modules/zone.js/dist/zone.js"></script>
 		<script src="node_modules/reflect-metadata/Reflect.js"></script>
 		<script src="node_modules/systemjs/dist/system.src.js"></script>
+		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- 2. Configure SystemJS -->
 		<script src="systemjs.config.js"></script>
 		<script>
 		System.import('app').catch(function(err){ console.error(err); });
-		</script>
-		<script>
-			/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-			function myFunction() {
-				var x = document.getElementById("myTopnav");
-				if (x.className === "topnav") {
-					x.className += " responsive";
-				} else {
-					x.className = "topnav";
-				}
-			}
 		</script>
 	</head>
 	<!-- 3. Display the application -->

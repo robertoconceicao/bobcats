@@ -12,16 +12,16 @@ var core_1 = require('@angular/core');
 var usuario_1 = require('../../classes/usuario');
 var login_service_1 = require('../../services/login.service');
 var router_1 = require('@angular/router');
-var UsuarioLoginFormComponent = (function () {
-    function UsuarioLoginFormComponent(router, loginService) {
+var PortalComponent = (function () {
+    function PortalComponent(router, loginService) {
         this.router = router;
         this.loginService = loginService;
     }
-    UsuarioLoginFormComponent.prototype.ngOnInit = function () {
+    PortalComponent.prototype.ngOnInit = function () {
         this.usuario = new usuario_1.Usuario();
         this.submitted = false;
     };
-    UsuarioLoginFormComponent.prototype.onSubmit = function () {
+    PortalComponent.prototype.onSubmit = function () {
         var _this = this;
         this.error = "";
         this.submitted = true;
@@ -32,6 +32,7 @@ var UsuarioLoginFormComponent = (function () {
             if (!response.valueOf()) {
                 _this.error = "Erro ao efetuar login, usuario/senha inválido";
                 _this.submitted = false;
+                _this.router.navigate(['/login']);
             }
             else {
                 _this.cdUsuario = localStorage.getItem("cdUsuario");
@@ -41,16 +42,17 @@ var UsuarioLoginFormComponent = (function () {
         }).catch(function (error) {
             _this.error = "Erro ao efetuar login, usuario/senha inválido";
             _this.submitted = false;
+            _this.router.navigate(['/login']);
         });
     };
-    UsuarioLoginFormComponent = __decorate([
+    PortalComponent = __decorate([
         core_1.Component({
-            selector: 'login-form',
-            templateUrl: 'app/components/login/usuario-login-form.component.html'
+            selector: 'portal',
+            templateUrl: 'app/components/portal/portal.component.html'
         }), 
         __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
-    ], UsuarioLoginFormComponent);
-    return UsuarioLoginFormComponent;
+    ], PortalComponent);
+    return PortalComponent;
 }());
-exports.UsuarioLoginFormComponent = UsuarioLoginFormComponent;
-//# sourceMappingURL=usuario-login-form.component.js.map
+exports.PortalComponent = PortalComponent;
+//# sourceMappingURL=portal.component.js.map
