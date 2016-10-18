@@ -18,7 +18,7 @@
     "webdriver:update": "webdriver-manager update"
   },
   "keywords": [],
-  "author": "",
+  "author": "Roberto da Conceição <conceicao.roberto@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -42,7 +42,8 @@
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.6",
     "systemjs": "0.19.27",
-    "zone.js": "^0.6.12"
+    "zone.js": "^0.6.12",
+    "ng2-file-upload": "^1.1.2"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
@@ -62,5 +63,16 @@
     "protractor": "^3.3.0",
     "rimraf": "^2.5.2"
   },
-  "repository": {}
+  "repository": {},
+  "contributors": [
+    {
+      "name": "Roberto da Conceição",
+      "email": "conceicao.roberto@gmail.com",
+      "url": "https://github.com/robertoconceicao"
+    },
+    {
+      "name": "Adriano Oselame",      
+      "url": "https://github.com/oselame"
+    }
+  ]
 }
