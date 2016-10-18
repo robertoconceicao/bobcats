@@ -1,35 +1,55 @@
-<!-- Fixed navbar -->    
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">BobCats</a>
+
+<div class="page-header">
+    <!-- Fixed navbar -->    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed btn btn-primary" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    (click)="telaLogin()">
+                    Login                        
+                </button>
+                <a class="navbar-brand" href="#">BobCats</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" (ngSubmit)="onSubmit()" #loginForm="ngForm" >
+                    <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" required
+                            [(ngModel)]="usuario.deLogin" name="delogin" #delogin="ngModel" style="text-transform:uppercase"
+                            (keyup)="cleanError()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" required
+                            [(ngModel)]="usuario.deSenha" name="senha" #senha="ngModel"
+                        (keyup)="cleanError()">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" [disabled]="submitted">Entrar</button>
+                    
+                    <div *ngIf="error" class="alert alert-danger" [hidden]="delogin.pristine || senha.pristine">
+                        {{error}}
+                    </div>
+                </form>
+            </div><!--/.nav-collapse -->
+        </div>    
+    </nav>
+</div>
+
+<div class="container jumbotron">    
+    <div class="row">
+        <div class="col-md-1">            
         </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-             <form class="navbar-form navbar-right" (ngSubmit)="onSubmit()" #loginForm="ngForm" >
-                <div class="form-group">
-                   <label for="login">Login</label>
-                   <input type="text" class="form-control" id="login" required
-                        [(ngModel)]="usuario.deLogin" name="delogin" #name="ngModel" style="text-transform:uppercase">
-                </div>
-
-                <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" class="form-control" id="senha" required
-                        [(ngModel)]="usuario.deSenha" name="senha" #senha="ngModel">
-                </div>
-                
-                <button type="submit" class="btn btn-default" [disabled]="submitted">Entrar</button>
-             </form>
-        </div><!--/.nav-collapse -->
-    </div>    
-</nav>
-
-<div class="row">
-    <div class="col-xs-6 divEsquerdaClass">
-
-    </div>
-    <div class="col-xs-6 divDireitaClass">
-        <usuario-cad-form></usuario-cad-form>
+        <div class="col-md-5 divEsquerdaClass">
+            <h2>Encontre os mais belos smartphones</h2>
+            <small>Visualize, comente, contrate e divirta-se ;).</small>
+        </div>
+        <div class="col-md-5 divDireitaClass">
+            <usuario-cad-form></usuario-cad-form>
+        </div>
+        <div class="col-md-1">          
+        </div>
     </div>
 </div>

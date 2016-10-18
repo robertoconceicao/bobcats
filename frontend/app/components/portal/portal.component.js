@@ -16,6 +16,8 @@ var PortalComponent = (function () {
     function PortalComponent(router, loginService) {
         this.router = router;
         this.loginService = loginService;
+        console.log("Chamando construtor portal....");
+        localStorage.removeItem("cdUsuario");
     }
     PortalComponent.prototype.ngOnInit = function () {
         this.usuario = new usuario_1.Usuario();
@@ -32,7 +34,6 @@ var PortalComponent = (function () {
             if (!response.valueOf()) {
                 _this.error = "Erro ao efetuar login, usuario/senha inválido";
                 _this.submitted = false;
-                _this.router.navigate(['/login']);
             }
             else {
                 _this.cdUsuario = localStorage.getItem("cdUsuario");
@@ -42,8 +43,16 @@ var PortalComponent = (function () {
         }).catch(function (error) {
             _this.error = "Erro ao efetuar login, usuario/senha inválido";
             _this.submitted = false;
-            _this.router.navigate(['/login']);
         });
+    };
+    PortalComponent.prototype.cleanError = function () {
+        if (!!this.error) {
+            this.error = "";
+            console.log("Limpa var error");
+        }
+    };
+    PortalComponent.prototype.telaLogin = function () {
+        this.router.navigate(['/login']);
     };
     PortalComponent = __decorate([
         core_1.Component({

@@ -20,6 +20,7 @@ import { MensagemComponent }            from './components/mensagem/mensagem.com
 import { MunicipioComponent }           from './components/municipio/municipio.component';
 import { NavbarComponent }              from './components/navbar/navbar.component';
 import { PortalComponent }              from './components/portal/portal.component';
+import { FooterComponent }              from './components/footer/footer.component';
 
 // Services
 import { UsuarioService}      from './services/usuario.service';
@@ -45,7 +46,8 @@ import { Auth }               from './services/auth.service';
     MunicipioComponent,
     NavbarComponent,
     ListaUsuariosComponent,
-    PortalComponent    
+    PortalComponent,
+    FooterComponent    
   ],  
   providers: [
     UsuarioService,

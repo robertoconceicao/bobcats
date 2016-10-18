@@ -20,7 +20,10 @@ export class PortalComponent implements OnInit {
   constructor(
       private router: Router,
       private loginService: LoginService
-      ){}
+      ){
+        console.log("Chamando construtor portal....");
+        localStorage.removeItem("cdUsuario");
+      }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -36,8 +39,7 @@ export class PortalComponent implements OnInit {
         console.log(response.valueOf());
         if(!response.valueOf()){
           this.error = "Erro ao efetuar login, usuario/senha inválido";
-          this.submitted = false;
-          this.router.navigate(['/login']);
+          this.submitted = false;          
         } else {          
           this.cdUsuario = localStorage.getItem("cdUsuario");
           console.log("Roteando para dashboard cdUsuario: "+this.cdUsuario);
@@ -45,8 +47,18 @@ export class PortalComponent implements OnInit {
         }
     }).catch(error => {
           this.error = "Erro ao efetuar login, usuario/senha inválido";
-          this.submitted = false;
-          this.router.navigate(['/login']);
+          this.submitted = false;          
     });
+  }
+
+  cleanError(){
+    if(!!this.error){
+      this.error = "";
+      console.log("Limpa var error");
+    }
+  }
+
+  telaLogin(){
+    this.router.navigate(['/login']);
   }
 }
