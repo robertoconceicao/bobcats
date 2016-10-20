@@ -10,4 +10,5 @@
   padding: 1rem;
   background-color: #efefef;
   text-align: center;
+  z-index: -1;
 }

@@ -16,13 +16,14 @@ export class DashboardComponent implements OnInit {
 
     public usuario: Usuario;
     public sujeito: Sujeito;
+
     constructor(
         private router: Router,
         private usuarioService: UsuarioService){}
 
     ngOnInit(){
        // this.usuarioService.getUsuarios()
-            //.then(usuarios => this.usuarios = usuarios.slice(1, 5));    
+       //.then(usuarios => this.usuarios = usuarios.slice(1, 5));    
     }
 
     gotoDetail(usuario: Usuario){
