@@ -23,6 +23,12 @@ var MunicipioService = (function () {
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
+    MunicipioService.prototype.getMunicipioById = function (cdMunicipio) {
+        return this.http.get(this.municipioUrl + "/id/" + cdMunicipio)
+            .toPromise()
+            .then(function (response) { return response.json().Municipios; })
+            .catch(this.handleError);
+    };
     MunicipioService.prototype.handleError = function (error) {
         console.log('An error occorred: ' + error);
         return Promise.reject(error.message || error);

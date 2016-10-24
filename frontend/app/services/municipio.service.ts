@@ -21,7 +21,15 @@ export class MunicipioService {
                     .toPromise()
                     .then(response => response.json().data as Municipio[])
                     .catch(this.handleError);        
-    }    
+    }   
+
+    getMunicipioById(cdMunicipio: string){
+        return this.http.get(`${this.municipioUrl}/id/${cdMunicipio}`)
+                    .toPromise()
+                    .then(response => response.json().Municipios as Municipio[])
+                    .catch(this.handleError);   
+    }
+
     private handleError(error: any){
        console.log('An error occorred: '+ error);
        return Promise.reject(error.message || error);

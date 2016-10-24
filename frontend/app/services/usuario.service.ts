@@ -20,6 +20,14 @@ export class UsuarioService {
                     .then(response => response.json().data as Usuario[])
                     .catch(this.handleError);
     }
+
+    getDadosSujeito(deLogin: string) {
+        let url = `${this.sujeitoUrl}/${deLogin}`;
+        return this.http.get(url)
+                    .toPromise()
+                    .then(response => response.json().Sujeitos as Sujeito[])
+                    .catch(this.handleError);
+    }
     
     login(usuario: Usuario) {
         let headers = new Headers({'Content-Type':'application/json'});                

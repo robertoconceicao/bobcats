@@ -25,19 +25,52 @@ export class UsuarioComponent implements OnInit {
     submitted: boolean;
     error: any;
     success: any;
+    deLogin: string;
     public generos = [{value: 'F', name: 'Fêminino'}, {value: 'M', name: 'Masculino'}];    
     
     constructor(
       private router: Router,
-      private usuarioService: UsuarioService
+      private usuarioService: UsuarioService,
+      private municipioService: MunicipioService
       ){}
 
     ngOnInit() {
         this.sujeito = new Sujeito();
         this.sujeito.flSexo = 'F';
         this.selectedMunicipio = new Municipio();
-        this.submitted = false;        
+        this.submitted = false;
+
+        this.getDadosSujeito();        
     } 
+
+    getDadosSujeito(){
+       this.deLogin = localStorage.getItem("deLogin");
+       this.usuarioService.getDadosSujeito(this.deLogin)                    
+                    .then(response => {
+                        console.log(response);           
+                        if(response.length > 0){                      
+                            this.sujeito = response[0];   
+                            this.getMunicipioSujeito(this.sujeito.cdMunicipio);
+                        } 
+                    })
+                    .catch(error => {
+                        console.log("Erro ao buscar dados do sujeito");
+                    });  
+    }
+
+    getMunicipioSujeito(cdMunicipio: string){
+        this.municipioService.getMunicipioById(cdMunicipio)
+                    .then(response => {
+                        console.log(response);           
+                        if(response.length > 0){                      
+                            this.selectedMunicipio = response[0];
+                            this.onNotifyMunicipio(this.selectedMunicipio);
+                        } 
+                    })
+                    .catch(error => {
+                        console.log("Erro ao buscar municipio do sujeito");
+                    });
+    }
 
     onSubmit() {
       this.submitted = false;

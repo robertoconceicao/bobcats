@@ -48,7 +48,32 @@ var _findAllMunicipiosByNome = function(conn, req, resp) {
     });
 };
 
+var _findMunicipiosById = function(conn, req, resp) {
+    var query = "Select m.cdMunicipio, m.nmMunicipio, e.nmEstado " +
+                "from epadmunicipio m " +
+                "join epadestado e on e.cdestado = m.cdestado " +
+                "where m.cdmunicipio = ? " +
+                "order by m.nmmunicipio, e.nmestado";
+    var table = [req.params.cdMunicipio];
+    query = mysql.format(query, table);
+    return conn.query(query, function(err, rows) {
+        if (err) {
+            resp.json({
+                "Error": true,
+                "Message": "Error executing MySQL query " + err
+            });
+        } else {
+            resp.json({
+                "Error": false,
+                "Message": "Success",
+                "Municipios": rows
+            });
+        }
+    });
+};
+
 module.exports = {
     findAllMunicipios: _findAllMunicipios,
-    findAllMunicipiosByNome: _findAllMunicipiosByNome
+    findAllMunicipiosByNome: _findAllMunicipiosByNome,
+    findMunicipiosById: _findMunicipiosById
 };

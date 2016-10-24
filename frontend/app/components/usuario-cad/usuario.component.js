@@ -12,12 +12,14 @@ var core_1 = require('@angular/core');
 var sujeito_1 = require('../../classes/sujeito');
 var municipio_1 = require('../../classes/municipio');
 var usuario_service_1 = require('../../services/usuario.service');
+var municipio_service_1 = require('../../services/municipio.service');
 var municipio_component_1 = require('../municipio/municipio.component');
 var router_1 = require('@angular/router');
 var UsuarioComponent = (function () {
-    function UsuarioComponent(router, usuarioService) {
+    function UsuarioComponent(router, usuarioService, municipioService) {
         this.router = router;
         this.usuarioService = usuarioService;
+        this.municipioService = municipioService;
         this.generos = [{ value: 'F', name: 'Fêminino' }, { value: 'M', name: 'Masculino' }];
     }
     UsuarioComponent.prototype.ngOnInit = function () {
@@ -25,6 +27,36 @@ var UsuarioComponent = (function () {
         this.sujeito.flSexo = 'F';
         this.selectedMunicipio = new municipio_1.Municipio();
         this.submitted = false;
+        this.getDadosSujeito();
+    };
+    UsuarioComponent.prototype.getDadosSujeito = function () {
+        var _this = this;
+        this.deLogin = localStorage.getItem("deLogin");
+        this.usuarioService.getDadosSujeito(this.deLogin)
+            .then(function (response) {
+            console.log(response);
+            if (response.length > 0) {
+                _this.sujeito = response[0];
+                _this.getMunicipioSujeito(_this.sujeito.cdMunicipio);
+            }
+        })
+            .catch(function (error) {
+            console.log("Erro ao buscar dados do sujeito");
+        });
+    };
+    UsuarioComponent.prototype.getMunicipioSujeito = function (cdMunicipio) {
+        var _this = this;
+        this.municipioService.getMunicipioById(cdMunicipio)
+            .then(function (response) {
+            console.log(response);
+            if (response.length > 0) {
+                _this.selectedMunicipio = response[0];
+                _this.onNotifyMunicipio(_this.selectedMunicipio);
+            }
+        })
+            .catch(function (error) {
+            console.log("Erro ao buscar municipio do sujeito");
+        });
     };
     UsuarioComponent.prototype.onSubmit = function () {
         var _this = this;
@@ -60,7 +92,7 @@ var UsuarioComponent = (function () {
             templateUrl: 'app/components/usuario-cad/usuario.component.html',
             directives: [municipio_component_1.MunicipioComponent]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, usuario_service_1.UsuarioService])
+        __metadata('design:paramtypes', [router_1.Router, usuario_service_1.UsuarioService, municipio_service_1.MunicipioService])
     ], UsuarioComponent);
     return UsuarioComponent;
 }());

@@ -30,8 +30,7 @@ export class LoginService implements CanActivate {
                     this.usuarioLogado = response.json().Usuarios[0] as Usuario;
                     localStorage.setItem('id_token', this.geraIdToken(this.usuarioLogado));
                     localStorage.setItem('cdUsuario', ""+this.usuarioLogado.cdUsuario);
-
-                 //   this.router.navigate(['/dashboard', this.usuarioLogado.cdUsuario]);
+                    localStorage.setItem('deLogin', ""+this.usuarioLogado.deLogin);
                     return true;           
                 } else {
                     return false;

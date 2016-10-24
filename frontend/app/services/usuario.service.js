@@ -24,6 +24,13 @@ var UsuarioService = (function () {
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
+    UsuarioService.prototype.getDadosSujeito = function (deLogin) {
+        var url = this.sujeitoUrl + "/" + deLogin;
+        return this.http.get(url)
+            .toPromise()
+            .then(function (response) { return response.json().Sujeitos; })
+            .catch(this.handleError);
+    };
     UsuarioService.prototype.login = function (usuario) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http

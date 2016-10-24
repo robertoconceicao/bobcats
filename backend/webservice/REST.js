@@ -29,8 +29,9 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
             "Usuariosujeito": {
                 "POST /api/usuariosujeito": "Insere um novo usuario e sujeito"
             },
-            "Municipio": {
+            "Municipio": {                
                 "GET /api/municipio": "Busca todos os nunicipios",
+                "GET /api/municipio/id/:cdMunicipio" : "Busca o municipio pelo Id",
                 "GET /api/municipio/:nmMunicipio": "Busca todos os nunicipios pelo nome"
             }
         });
@@ -86,6 +87,9 @@ REST_ROUTER.prototype.handleRoutes = function(router, connection, md5) {
     });
     router.get("/municipio/:nmMunicipio", function(req, res) {
         municipiodao.findAllMunicipiosByNome(connection, req, res);
+    });
+    router.get("/municipio/id/:cdMunicipio", function(req, res) {
+        municipiodao.findMunicipiosById(connection, req, res);
     });
 
 }

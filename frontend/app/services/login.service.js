@@ -33,7 +33,7 @@ var LoginService = (function () {
                 _this.usuarioLogado = response.json().Usuarios[0];
                 localStorage.setItem('id_token', _this.geraIdToken(_this.usuarioLogado));
                 localStorage.setItem('cdUsuario', "" + _this.usuarioLogado.cdUsuario);
-                //   this.router.navigate(['/dashboard', this.usuarioLogado.cdUsuario]);
+                localStorage.setItem('deLogin', "" + _this.usuarioLogado.deLogin);
                 return true;
             }
             else {
