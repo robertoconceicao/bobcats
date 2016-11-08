@@ -96,6 +96,7 @@ var _atualizarSujeito = function(conn, req, resp) {
     var table = [req.body.cdMunicipio, req.body.nmSujeito,
                  req.body.dtNascimento, req.body.flSexo, req.body.nuTelefone,
                  req.body.deEmail, req.body.cdUsuario];
+    console.log("_atualizarSujeito: "+table);
     query = mysql.format(query, table);
     return conn.query(query, function(err, rows) {
         if (err) {

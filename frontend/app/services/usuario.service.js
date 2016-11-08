@@ -44,7 +44,7 @@ var UsuarioService = (function () {
         return this.post(usuario);
     };
     UsuarioService.prototype.saveSujeito = function (sujeito) {
-        if (sujeito.nuSeqsujeito) {
+        if (sujeito.cdUsuario) {
             return this.putSujeito(sujeito);
         }
         return this.postSujeito(sujeito);
@@ -79,7 +79,6 @@ var UsuarioService = (function () {
     //Add
     UsuarioService.prototype.postSujeito = function (sujeito) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        console.log("JSON.stringify(sujeito): " + JSON.stringify(sujeito));
         return this.http
             .post(this.sujeitoUrl, JSON.stringify(sujeito), { headers: headers })
             .toPromise();
@@ -87,9 +86,8 @@ var UsuarioService = (function () {
     //Edit
     UsuarioService.prototype.putSujeito = function (sujeito) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var url = this.sujeitoUrl + "/" + sujeito.nuSeqsujeito;
         return this.http
-            .put(url, JSON.stringify(sujeito), { headers: headers })
+            .put(this.sujeitoUrl, JSON.stringify(sujeito), { headers: headers })
             .toPromise();
     };
     UsuarioService.prototype.handleError = function (error) {

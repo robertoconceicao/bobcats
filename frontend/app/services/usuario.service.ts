@@ -44,7 +44,7 @@ export class UsuarioService {
     }
 
     saveSujeito(sujeito: Sujeito): Promise<any> {
-        if(sujeito.nuSeqsujeito) {
+        if(sujeito.cdUsuario) {
             return this.putSujeito(sujeito);
         }
         return this.postSujeito(sujeito);
@@ -88,7 +88,6 @@ export class UsuarioService {
     //Add
     private postSujeito(sujeito: Sujeito) : Promise<any> {
         let headers = new Headers({'Content-Type':'application/json'});
-        console.log("JSON.stringify(sujeito): "+JSON.stringify(sujeito));
         return this.http
                     .post(this.sujeitoUrl, JSON.stringify(sujeito),{headers: headers})
                     .toPromise();                    
@@ -97,12 +96,11 @@ export class UsuarioService {
     //Edit
     private putSujeito(sujeito: Sujeito) : Promise<any> {
         let headers = new Headers({'Content-Type':'application/json'});
-        let url = `${this.sujeitoUrl}/${sujeito.nuSeqsujeito}`;
-
         return this.http
-                    .put(url, JSON.stringify(sujeito), {headers: headers})
+                    .put(this.sujeitoUrl, JSON.stringify(sujeito), {headers: headers})
                     .toPromise();                    
     }
+    
     private handleError(error: any){
         console.error('An error occorred', error);
         return Promise.reject(error.message || error);

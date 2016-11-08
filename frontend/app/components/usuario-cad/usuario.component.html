@@ -36,7 +36,7 @@
   </div>    
   
   <div class="form-group">    
-    <localizacao (notify)='onNotifyMunicipio($event)'></localizacao>
+    <localizacao (notify)='onNotifyMunicipio($event)' [selectedMunicipio]="selectedMunicipio"></localizacao>
   </div>
   
   <button type="submit" class="btn btn-success" [disabled]="submitted">Salvar Informações</button>
