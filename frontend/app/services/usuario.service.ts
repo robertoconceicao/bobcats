@@ -44,7 +44,7 @@ export class UsuarioService {
     }
 
     saveSujeito(sujeito: Sujeito): Promise<any> {
-        if(sujeito.cdUsuario) {
+        if(sujeito.nuSeqsujeito) {
             return this.putSujeito(sujeito);
         }
         return this.postSujeito(sujeito);
