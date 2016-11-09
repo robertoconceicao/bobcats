@@ -35,6 +35,7 @@ import {LoginService} from '../../services/login.service';
                         <li><a (click)="navega('/municipio')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Localizacao</span></a></li>
                         <li><a (click)="navega('/login')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Login</span></a></li>
                         <li><a (click)="navega('/cad_usuario')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Novo Usuário</span></a></li>
+                        <li><a (click)="navega('/fotos')" routerLinkActive="active" class="skel-layers-ignoreHref"><span class="icon fa-user">Fotos</span></a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">            

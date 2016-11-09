@@ -44,7 +44,7 @@ var UsuarioService = (function () {
         return this.post(usuario);
     };
     UsuarioService.prototype.saveSujeito = function (sujeito) {
-        if (sujeito.cdUsuario) {
+        if (sujeito.nuSeqsujeito) {
             return this.putSujeito(sujeito);
         }
         return this.postSujeito(sujeito);
