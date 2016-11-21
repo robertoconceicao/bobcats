@@ -11,7 +11,7 @@ import { MensagemComponent }            from './components/mensagem/mensagem.com
 import { MunicipioComponent }           from './components/municipio/municipio.component';
 import { NavbarComponent }              from './components/navbar/navbar.component';
 import { PortalComponent }              from './components/portal/portal.component';
-import { UploadFileComponent }          from './components/upload-file/upload-file.component';
+import { UploadComponent }              from './components/upload-file/upload.component';
 
 const appRoutes: Routes = [
   {
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   },
   {
       path: 'fotos',
-      component: UploadFileComponent
+      component: UploadComponent
       //, canActivate: ['CanAlwaysActivateGuard', LoginService]
   }  
 ];

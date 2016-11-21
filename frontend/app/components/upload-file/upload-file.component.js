@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ng2_file_upload_1 = require('../../../ng2-file-upload');
+//import { FileUploader } from 'ng2-file-upload';
 // const URL = '/api/';
 var URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 var UploadFileComponent = (function () {
     function UploadFileComponent() {
-        this.uploader = new ng2_file_upload_1.FileUploader({ url: URL });
+        //  public uploader:FileUploader = new FileUploader({url: URL});
         this.hasBaseDropZoneOver = false;
         this.hasAnotherDropZoneOver = false;
     }

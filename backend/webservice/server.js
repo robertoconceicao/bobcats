@@ -5,6 +5,11 @@ var md5 = require('MD5');
 var rest = require("./REST.js");
 var app = express();
 
+//formidable will parse the incoming form data (the uploaded files)
+//The fs module will be used to rename uploaded files
+var formidable = require('formidable');
+var fs = require('fs');
+
 // Add headers
 app.use(function (req, res, next) {
 
